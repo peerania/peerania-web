@@ -1,23 +1,26 @@
 {
-  "app.containers.HomePage.title": "Peerania | Главная",
-  "app.containers.HomePage.description": "Peerania | Описание главной страницы",
-  "app.containers.HomePage.faqTitle": "Peerania | ЧАВО",
-  "app.containers.HomePage.faqDescription": "Peerania | ЧАВО Описание",
+  "app.containers.HomePage.title": "Peerania",
+  "app.containers.HomePage.description":
+    "Децентрализованная платформа вопросов и ответов на блокчейне с вознаграждениями крипто-токенами",
+  "app.containers.HomePage.faqTitle": "Часто Задоваемые Вопросы",
+  "app.containers.HomePage.faqDescription":
+    "Часто Задоваемые Вопросы о Peerania",
   "app.containers.HomePage.about": "О нас",
-  "app.containers.HomePage.rewards": "Награды",
+  "app.containers.HomePage.rewards": "Нарграды",
   "app.containers.HomePage.faq": "ЧАВО",
   "app.containers.HomePage.team": "Команда",
-  "app.containers.HomePage.login": "Вход",
-  "app.containers.HomePage.signUpFree": "Регистрация",
+  "app.containers.HomePage.login": "Войти",
+  "app.containers.HomePage.signUpFree": "Регестрация",
   "app.containers.HomePage.knowledgeSharingEconomy":
     "Экономика обмена знаниями",
   "app.containers.HomePage.weAreDecentralized":
-    "Мы - децентрализованная платформа вопросов и ответов для профессиональных сообществ с экономикой, которая платит вкладчикам в криптовалюте",
+    "Децентрализованная платформа вопросов и ответов для профессиональных сообществ с экономикой, которая выплачивает пользователям вознаграждения за участие в криптовалюте",
   "app.containers.HomePage.getStarted": "Начинай",
   "app.containers.HomePage.yourEmail": "Ваш email адрес",
   "app.containers.HomePage.differentThan":
     "Мы отличаемся от других Вопрос - Ответ сайтов",
-  "app.containers.HomePage.practicalAnswers": "Практические вопросы и ответы",
+  "app.containers.HomePage.practicalAnswers":
+    "Только практические вопросы и ответы",
   "app.containers.HomePage.sitesAreModerated":
     "Сайты модерируются сообществом. Разрешены только подробные вопросы и ответы на очень практические вопросы",
   "app.containers.HomePage.fairEconomy":

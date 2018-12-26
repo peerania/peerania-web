@@ -98,52 +98,28 @@ const Box = Section.extend`
 
 const QuestionsData = [
   {
-    header: 'whatIsPeerania',
-    body: 'whatIsPeeraniaCollapsed',
+    header: 'q1',
+    body: 'a1',
   },
   {
-    header: 'howToCreateAcc',
-    body: 'howToCreateAccCollapsed',
+    header: 'q2',
+    body: 'a2',
   },
   {
-    header: 'howToUpvote',
-    body: 'howToUpvoteCollapsed',
+    header: 'q3',
+    body: 'a3',
   },
   {
-    header: 'whatToPost',
-    body: 'whatToPostCollapsed',
+    header: 'q4',
+    body: 'a4',
   },
   {
-    header: 'canIEarn',
-    body: 'canIEarnCollapsed',
+    header: 'q5',
+    body: 'a5',
   },
   {
-    header: 'whatIsReputation',
-    body: 'whatIsReputationCollapsed',
-  },
-  {
-    header: 'whatIsPeerania',
-    body: 'whatIsPeeraniaCollapsed',
-  },
-  {
-    header: 'howToCreateAcc',
-    body: 'howToCreateAccCollapsed',
-  },
-  {
-    header: 'howToUpvote',
-    body: 'howToUpvoteCollapsed',
-  },
-  {
-    header: 'whatToPost',
-    body: 'whatToPostCollapsed',
-  },
-  {
-    header: 'canIEarn',
-    body: 'canIEarnCollapsed',
-  },
-  {
-    header: 'whatIsReputation',
-    body: 'whatIsReputationCollapsed',
+    header: 'q6',
+    body: 'a6',
   },
 ];
 

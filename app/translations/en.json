@@ -1,33 +1,34 @@
 {
-  "app.containers.HomePage.title": "Peerania | Landing",
-  "app.containers.HomePage.description": "Peerania | Description",
-  "app.containers.HomePage.faqTitle": "Peerania | FAQ",
-  "app.containers.HomePage.faqDescription": "Peerania | FAQ Description",
+  "app.containers.HomePage.title": "Peerania",
+  "app.containers.HomePage.description":
+    "Decentralized Question and Answer Platform on blockchain with crypto rewards",
+  "app.containers.HomePage.faqTitle": "Frequently Asked Questions",
+  "app.containers.HomePage.faqDescription":
+    "Frequently Asked Questions about Peerania project",
   "app.containers.HomePage.about": "About",
   "app.containers.HomePage.rewards": "Rewards",
   "app.containers.HomePage.faq": "FAQ",
   "app.containers.HomePage.team": "Team",
   "app.containers.HomePage.login": "Log in",
-  "app.containers.HomePage.signUpFree": "Sign up free",
+  "app.containers.HomePage.signUpFree": "Sign up",
   "app.containers.HomePage.knowledgeSharingEconomy":
     "Knowledge Sharing Economy",
   "app.containers.HomePage.weAreDecentralized":
-    "We are decentralized question and answer platform for professional communities with economy that pays contributors in crypto",
+    "Decentralized question and answer platform for professional communities with economy that pays contributors in crypto",
   "app.containers.HomePage.getStarted": "Get started",
   "app.containers.HomePage.yourEmail": "Your email address",
   "app.containers.HomePage.differentThan":
     "Different than other Question and Answers sites",
-  "app.containers.HomePage.practicalAnswers": "Practical Answers and Questions",
+  "app.containers.HomePage.practicalAnswers": "Practical Questions and Answers",
   "app.containers.HomePage.sitesAreModerated":
-    "Sites are moderated by community. Only detailed questions and answers to very practical questions are allowed",
-  "app.containers.HomePage.fairEconomy": "Fair economy where users are paid",
+    "Only detailed and practical questions are allowed. Website is moderated by community of the users.",
+  "app.containers.HomePage.fairEconomy": "Fair Economy",
   "app.containers.HomePage.postsOnQA":
-    "Posts on Q&A websites save millions of people many hours of work. We believe that people should be paid for helpful contributions to community.",
-  "app.containers.HomePage.builtOnSmart":
-    "Built on Smart Contracts and Blockchain",
+    "Posts on professional Q&A websites save millions of people many hours of work. Peerania rewards users in crypto tokens for the contributions to community.",
+  "app.containers.HomePage.builtOnSmart": "Fully Decentralized",
   "app.containers.HomePage.platformIsDistributed":
-    "The platform is distributed built on blockchain and IPFS technologies. Platforms rules and economy are built into smart contract.",
-  "app.containers.HomePage.simpleAndAffordable": "Simple and affordable",
+    "Peerania is built using blockchain and IPFS technologies. Platform rules and economy are built into smart contract and goverened by community.",
+  "app.containers.HomePage.simpleAndAffordable": "Simple and fast",
   "app.containers.HomePage.getHelp": "Get Help and Help Others",
   "app.containers.HomePage.askQuestionAndGetHelp":
     "Ask questions and get help from community of experts passionate about the topic. And help thousands of other peers who get answer to the question in minutes instead of hours thanks to your post.",
@@ -46,7 +47,7 @@
     "Whether you ask or answer questions, all contributions count. Earn reputation and recognition in the community. Unlock new privileges as your reputation grows.",
   "app.containers.HomePage.honorableAndFascinating":
     "Honorable and fascinating",
-  "app.containers.HomePage.ruleThePlatform": "Rule the Platform",
+  "app.containers.HomePage.ruleThePlatform": "Be the Government",
   "app.containers.HomePage.participateInModeration":
     "Participate in moderation of the community and help community to thrive. Success of community directly impacts the value of token on the market. Propose, vote for or even build upgrades for the platform. The platform is open source and decentralized. Owned by you and your community.",
   "app.containers.HomePage.beTheFirst":
@@ -54,23 +55,23 @@
   "app.containers.HomePage.rewardsPool":
     "Rewards pool is distributed weekly between all of the contributors for the given week. Members that join early get higher rewards while community is growing.",
   "app.containers.HomePage.getReward": "Get Reward",
-  "app.containers.HomePage.whatIsPeerania": "What is Peerania",
-  "app.containers.HomePage.whatIsPeeraniaCollapsed": "What is Peerania",
-  "app.containers.HomePage.howToCreateAcc": "How do I create an account?",
-  "app.containers.HomePage.howToCreateAccCollapsed":
-    "How do I create an account?",
-  "app.containers.HomePage.howToUpvote": "How do I upvote a post or comment?",
-  "app.containers.HomePage.howToUpvoteCollapsed":
-    "How do I upvote a post or comment?",
-  "app.containers.HomePage.whatToPost": "What can users post to Peerania?",
-  "app.containers.HomePage.whatToPostCollapsed":
-    "What can users post to Peerania?",
-  "app.containers.HomePage.canIEarn":
-    "Can I earn Crypto Tokens for commenting?",
-  "app.containers.HomePage.canIEarnCollapsed":
-    "Can I earn Crypto Tokens for commenting?",
-  "app.containers.HomePage.whatIsReputation": "What is Reputation?",
-  "app.containers.HomePage.whatIsReputationCollapsed": "What is Reputation?",
+  "app.containers.HomePage.faq.q1": "Does it cost anything?",
+  "app.containers.HomePage.faq.a1":
+    "No. Peerania is free for the users. Actually users get paid in PEER tokens for thier activity!",
+  "app.containers.HomePage.faq.q2": "How can I earn PEER tokens?",
+  "app.containers.HomePage.faq.a2":
+    "All activities on the paltform that are considered valuable for a community are rewarded in PEER token. Such activities include posting questions, posting answers, upvoting, moderation activities and other.",
+  "app.containers.HomePage.faq.q3": "Where do tokens come from?",
+  "app.containers.HomePage.faq.a3":
+    "Peerania platform continually creates new digital tokens to reward contributors and moderators. Newly-created tokens are transferred to users who add value to the platform by posting questions, answers, and voting on other people's posts.",
+  "app.containers.HomePage.faq.q4": "Where does the value of tokens come from?",
+  "app.containers.HomePage.faq.a4": "TBD",
+  "app.containers.HomePage.faq.q5":
+    "Why build Question and Answer platform on Blockchain?",
+  "app.containers.HomePage.faq.a5": "TBD",
+  "app.containers.HomePage.faq.q6":
+    "How website moderation works in decentralized environment?",
+  "app.containers.HomePage.faq.a6": "TBD",
   "app.containers.HomePage.getMoreAnswers": "Get more answers",
   "app.containers.HomePage.ourTeam": "Our team",
   "app.containers.HomePage.weAppreciate":

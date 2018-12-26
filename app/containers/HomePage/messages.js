@@ -9,19 +9,19 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   title: {
     id: 'app.containers.HomePage.title',
-    defaultMessage: `Peerania | Landing`,
+    defaultMessage: `Peerania`,
   },
   description: {
     id: 'app.containers.HomePage.description',
-    defaultMessage: `Peerania | Description`,
+    defaultMessage: `Decentralized Question and Answer Platform with Crypto Rewards`,
   },
   faqTitle: {
     id: 'app.containers.HomePage.faqTitle',
-    defaultMessage: `Peerania | FAQ`,
+    defaultMessage: `Frequently Asked Questions`,
   },
   faqDescription: {
     id: 'app.containers.HomePage.title',
-    defaultMessage: `Peerania | FAQ Description`,
+    defaultMessage: `Frequently Asked Questions about Peerania project`,
   },
   about: {
     id: 'app.containers.HomePage.about',
@@ -45,7 +45,7 @@ export default defineMessages({
   },
   signUpFree: {
     id: 'app.containers.HomePage.signUpFree',
-    defaultMessage: `Sign up free`,
+    defaultMessage: `Sign up`,
   },
   knowledgeSharingEconomy: {
     id: 'app.containers.HomePage.knowledgeSharingEconomy',
@@ -53,7 +53,7 @@ export default defineMessages({
   },
   weAreDecentralized: {
     id: 'app.containers.HomePage.weAreDecentralized',
-    defaultMessage: `We are decentralized question and answer platform for professional communities with economy that pays contributors in crypto`,
+    defaultMessage: `Decentralized question and answer platform for professional communities with economy that pays contributors in crypto`,
   },
   getStarted: {
     id: 'app.containers.HomePage.getStarted',
@@ -69,31 +69,31 @@ export default defineMessages({
   },
   practicalAnswers: {
     id: 'app.containers.HomePage.practicalAnswers',
-    defaultMessage: `Practical Answers and Questions`,
+    defaultMessage: `Practical Questions and Answers`,
   },
   sitesAreModerated: {
     id: 'app.containers.HomePage.sitesAreModerated',
-    defaultMessage: `Sites are moderated by community. Only detailed questions and answers to very practical questions are allowed`,
+    defaultMessage: `Only detailed and practical questions are allowed. Website is moderated by community of the users.`,
   },
   fairEconomy: {
     id: 'app.containers.HomePage.fairEconomy',
-    defaultMessage: `Fair economy where users are paid`,
+    defaultMessage: `Fair Economy`,
   },
   postsOnQA: {
     id: 'app.containers.HomePage.postsOnQA',
-    defaultMessage: `Posts on Q&A websites save millions of people many hours of work. We believe that people should be paid for helpful contributions to community.`,
+    defaultMessage: `Posts on professional Q&A websites save millions of people many hours of work. Peerania rewards users in crypto tokens for the contributions to community.`,
   },
   builtOnSmart: {
     id: 'app.containers.HomePage.builtOnSmart',
-    defaultMessage: `Built on Smart Contracts and Blockchain`,
+    defaultMessage: `Fully Decentralized`,
   },
   platformIsDistributed: {
     id: 'app.containers.HomePage.platformIsDistributed',
-    defaultMessage: `The platform is distributed built on blockchain and IPFS technologies. Platforms rules and economy are built into smart contract.`,
+    defaultMessage: `Peerania is built using blockchain and IPFS technologies. Platform rules and economy are built into smart contract and goverened by community.`,
   },
   simpleAndAffordable: {
     id: 'app.containers.HomePage.simpleAndAffordable',
-    defaultMessage: `Simple and affordable`,
+    defaultMessage: `Simple and fast`,
   },
   getHelp: {
     id: 'app.containers.HomePage.getHelp',
@@ -145,7 +145,7 @@ export default defineMessages({
   },
   ruleThePlatform: {
     id: 'app.containers.HomePage.ruleThePlatform',
-    defaultMessage: `Rule the Platform`,
+    defaultMessage: `Be the Government`,
   },
   participateInModeration: {
     id: 'app.containers.HomePage.participateInModeration',
@@ -163,53 +163,41 @@ export default defineMessages({
     id: 'app.containers.HomePage.getReward',
     defaultMessage: `Get Reward`,
   },
-  whatIsPeerania: {
-    id: 'app.containers.HomePage.whatIsPeerania',
-    defaultMessage: `What is Peerania?`,
+  q1: {
+    id: 'app.containers.HomePage.faq.q1',
   },
-  whatIsPeeraniaCollapsed: {
-    id: 'app.containers.HomePage.whatIsPeeraniaCollapsed',
-    defaultMessage: `What is Peerania?`,
+  a1: {
+    id: 'app.containers.HomePage.faq.a1',
   },
-  howToCreateAcc: {
-    id: 'app.containers.HomePage.howToCreateAcc',
-    defaultMessage: `How do I create an account?`,
+  q2: {
+    id: 'app.containers.HomePage.faq.q2',
   },
-  howToCreateAccCollapsed: {
-    id: 'app.containers.HomePage.howToCreateAccCollapsed',
-    defaultMessage: `How do I create an account?`,
+  a2: {
+    id: 'app.containers.HomePage.faq.a2',
   },
-  howToUpvote: {
-    id: 'app.containers.HomePage.howToUpvote',
-    defaultMessage: `How do I upvote a post or comment?`,
+  q3: {
+    id: 'app.containers.HomePage.faq.q3',
   },
-  howToUpvoteCollapsed: {
-    id: 'app.containers.HomePage.howToUpvoteCollapsed',
-    defaultMessage: `How do I upvote a post or comment?`,
+  a3: {
+    id: 'app.containers.HomePage.faq.a3',
   },
-  whatToPost: {
-    id: 'app.containers.HomePage.whatToPost',
-    defaultMessage: `What can users post to Peerania?`,
+  q4: {
+    id: 'app.containers.HomePage.faq.q4',
   },
-  whatToPostCollapsed: {
-    id: 'app.containers.HomePage.whatToPostCollapsed',
-    defaultMessage: `What can users post to Peerania?`,
+  a4: {
+    id: 'app.containers.HomePage.faq.a4',
   },
-  canIEarn: {
-    id: 'app.containers.HomePage.canIEarn',
-    defaultMessage: `Can I earn Crypto Tokens for commenting?`,
+  q5: {
+    id: 'app.containers.HomePage.faq.q5',
   },
-  canIEarnCollapsed: {
-    id: 'app.containers.HomePage.canIEarnCollapsed',
-    defaultMessage: `Can I earn Crypto Tokens for commenting?`,
+  a5: {
+    id: 'app.containers.HomePage.faq.a5',
   },
-  whatIsReputation: {
-    id: 'app.containers.HomePage.whatIsReputation',
-    defaultMessage: `What is Reputation?`,
+  q6: {
+    id: 'app.containers.HomePage.faq.q6',
   },
-  whatIsReputationCollapsed: {
-    id: 'app.containers.HomePage.whatIsReputationCollapsed',
-    defaultMessage: `What is Reputation?`,
+  a6: {
+    id: 'app.containers.HomePage.faq.a6',
   },
   getMoreAnswers: {
     id: 'app.containers.HomePage.getMoreAnswers',
