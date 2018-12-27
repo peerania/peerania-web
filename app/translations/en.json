@@ -57,21 +57,23 @@
   "app.containers.HomePage.getReward": "Get Reward",
   "app.containers.HomePage.faq.q1": "Does it cost anything?",
   "app.containers.HomePage.faq.a1":
-    "No. Peerania is free for the users. Actually users get paid in PEER tokens for thier activity!",
-  "app.containers.HomePage.faq.q2": "How can I earn PEER tokens?",
+    "No. Peerania is free for the users. Actually users get paid in crypto tokens for thier activity!",
+  "app.containers.HomePage.faq.q2": "How can I earn Peerania crypto tokens?",
   "app.containers.HomePage.faq.a2":
-    "All activities on the paltform that are considered valuable for a community are rewarded in PEER token. Such activities include posting questions, posting answers, upvoting, moderation activities and other.",
+    "All activities on the paltform that are considered valuable for a community are rewarded in crypto token. Such activities include posting questions, posting answers, upvoting, moderation activities and other.",
   "app.containers.HomePage.faq.q3": "Where do tokens come from?",
   "app.containers.HomePage.faq.a3":
     "Peerania platform continually creates new digital tokens to reward contributors and moderators. Newly-created tokens are transferred to users who add value to the platform by posting questions, answers, and voting on other people's posts.",
   "app.containers.HomePage.faq.q4": "Where does the value of tokens come from?",
-  "app.containers.HomePage.faq.a4": "TBD",
+  "app.containers.HomePage.faq.a4":
+    "Because Peerania platform is blockchain based, tokens can be traded on crypto exchanges. Additionally, Peerania incorporates game system and users unlock additional powers by staking the tokens. Finally, we plan to indroduce job postings board and ads on the plaform that use tokens as payment method.",
   "app.containers.HomePage.faq.q5":
     "Why build Question and Answer platform on Blockchain?",
-  "app.containers.HomePage.faq.a5": "TBD",
-  "app.containers.HomePage.faq.q6":
-    "How website moderation works in decentralized environment?",
-  "app.containers.HomePage.faq.a6": "TBD",
+  "app.containers.HomePage.faq.a5":
+    "Blockchain technology allows us to revolutionalize data ownership and distribution of financial rewards for the valuable content on the internet. Where in the current state, platform providers own the data and get all of the rewards from manitization of the platform. In the future state, data is owned by community and rewards are distributed fairly by an algorithm defined in the Smart Contract.c",
+  "app.containers.HomePage.faq.q6": "Is the platform live?",
+  "app.containers.HomePage.faq.a6":
+    "Platform is in active development. Beta release is planned for end of Q1 2019.",
   "app.containers.HomePage.getMoreAnswers": "Get more answers",
   "app.containers.HomePage.ourTeam": "Our team",
   "app.containers.HomePage.weAppreciate":
