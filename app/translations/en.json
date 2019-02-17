@@ -12,22 +12,22 @@
   "app.containers.HomePage.login": "Log in",
   "app.containers.HomePage.signUpFree": "Sign up",
   "app.containers.HomePage.knowledgeSharingEconomy":
-    "Knowledge Sharing Economy",
+    "The future of peer-to-peer knowledge exchange",
   "app.containers.HomePage.weAreDecentralized":
-    "Decentralized question and answer platform for professional communities with economy that pays contributors in crypto",
+    "Decentralized Question and Answer platform that rewards users for valuable contributions in crypto tokens",
   "app.containers.HomePage.getStarted": "Get started",
   "app.containers.HomePage.yourEmail": "Your email address",
   "app.containers.HomePage.differentThan":
-    "Different than other Question and Answers sites",
-  "app.containers.HomePage.practicalAnswers": "Practical Questions and Answers",
+    "Join Peerania to build a community of peer-to-peer mutual aid of the future that:",
+  "app.containers.HomePage.practicalAnswers": "Rewards Users in Crypto",
   "app.containers.HomePage.sitesAreModerated":
-    "Only detailed and practical questions are allowed. Website is moderated by community of the users.",
-  "app.containers.HomePage.fairEconomy": "Fair Economy",
+    "Posts on professional Q&A websites save millions of people many hours of work. Q&A websites receive millions of daily users and monetize them. However, users contributing on the website don’t receive any money. Peerania platform rewards users in crypto tokens for the contributions to community proportional to the value of the contribution.",
+  "app.containers.HomePage.fairEconomy": "Owned by Users",
   "app.containers.HomePage.postsOnQA":
-    "Posts on professional Q&A websites save millions of people many hours of work. Peerania rewards users in crypto tokens for the contributions to community.",
-  "app.containers.HomePage.builtOnSmart": "Fully Decentralized",
+    "Traditional Question and Answer websites owned by platform provider. Website owners control moderation and changes to the functionality of the website, as well as the content posted on the websites. Peerania is built on blockchain and fully decentralized. Platform rules and economy are built into smart contract and managed by community/ Open-source code of the platform, as well as the content on the platform, belong to the community; not developers of the platform.",
+  "app.containers.HomePage.builtOnSmart": "Values Early Adopter Users",
   "app.containers.HomePage.platformIsDistributed":
-    "Peerania is built using blockchain and IPFS technologies. Platform rules and economy are built into smart contract and goverened by community.",
+    "Time is the most valuable resources that we possess. User contributions on Peerania are expected to be highly rewarding once the platform becomes popular and token grows in value. However, the risk of not being successful is high as for any traditional startup. Peerania economy rules are built in a way that the first users get significantly higher rewards than the users that join the platform after mass adoption.",
   "app.containers.HomePage.simpleAndAffordable": "Simple and fast",
   "app.containers.HomePage.getHelp": "Get Help and Help Others",
   "app.containers.HomePage.askQuestionAndGetHelp":
@@ -51,9 +51,9 @@
   "app.containers.HomePage.participateInModeration":
     "Participate in moderation of the community and help community to thrive. Success of community directly impacts the value of token on the market. Propose, vote for or even build upgrades for the platform. The platform is open source and decentralized. Owned by you and your community.",
   "app.containers.HomePage.beTheFirst":
-    "Be the first to join and earn up to 100x more rewards",
+    "Be one of the first user and help community to grow. Earn many times higher rewards than user that join after mass adoption.",
   "app.containers.HomePage.rewardsPool":
-    "Rewards pool is distributed weekly between all of the contributors for the given week. Members that join early get higher rewards while community is growing.",
+    "Rewards are distributed weekly between all of the contributors for the given week. Members that join early get higher rewards while total number of users is low during gorws of community.",
   "app.containers.HomePage.getReward": "Get Reward",
   "app.containers.HomePage.faq.q1": "Does it cost anything?",
   "app.containers.HomePage.faq.a1":

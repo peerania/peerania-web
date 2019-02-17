@@ -25,15 +25,15 @@ const Box = styled.div`
   font-size: 16px;
 
   .top-level {
-    font-size: 4em;
-    line-height: 1.23;
+    font-size: 3em;
+    line-height: 1;
     padding-top: 100px;
   }
 
   .special-paragraph {
     font-size: 1.5em;
-    padding-top: 43px;
-    padding-bottom: 58px;
+    padding-top: 33px;
+    padding-bottom: 38px;
   }
 
   form {
