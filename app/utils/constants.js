@@ -56,7 +56,7 @@ export const ALL_PERIODS_SCOPE = 'allperiods';
 export const USER_SUPPLY_SCOPE = 'PEER';
 
 // Inf. limit
-export const INF_LIMIT = -1;
+export const INF_LIMIT = 1000;
 
 // Methods
 

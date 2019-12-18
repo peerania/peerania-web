@@ -225,6 +225,7 @@ const Weeks = ({
             .slice(2)
             .map(x => (
               <PaidOutWeek
+                key={x.period}
                 pickupRewardDispatch={pickupRewardDispatch}
                 pickupRewardProcessing={pickupRewardProcessing}
                 locale={locale}
