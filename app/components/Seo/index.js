@@ -12,7 +12,7 @@ import {
 import { APP_MAIN_NAME } from 'utils/constants';
 import { selectCommunities } from 'containers/DataCacheProvider/selectors';
 
-import peeranhaFavicon from '!file-loader?name=[name].[ext]!images/favicon.ico';
+import peeranhaFavicon from 'images/favicon.png';
 
 const styles = singleCommunityStyles();
 

@@ -3,7 +3,7 @@ import React from 'react';
 import coinsBlueIcon from 'images/coinsBlue.svg?external';
 import TelosLogo from './images/telos-logo-dark.svg?inline';
 import TelosLogoLight from './images/telos-logo-light.svg?inline';
-import favicon from '!file-loader?name=[name].[ext]!images/favicon-telos.ico';
+import favicon from 'images/favicon-telos.png';
 
 import MediumEOT from './fonts/NeueHaasDisplay-Mediu.eot';
 import MediumWOFF from './fonts/NeueHaasDisplay-Mediu.woff';

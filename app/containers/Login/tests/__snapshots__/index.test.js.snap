@@ -70,7 +70,7 @@ exports[`<Login /> render content === WE_ARE_HAPPY_FORM 1`] = `
   }
   show={true}
 >
-  <ReduxForm
+  <Connect(ReduxForm)
     finishRegistration={[MockFunction]}
     finishRegistrationProcessing={false}
     locale="en"

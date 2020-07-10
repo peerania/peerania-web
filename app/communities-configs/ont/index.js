@@ -2,7 +2,7 @@ import React from 'react';
 
 import coinsBlueIcon from 'images/coinsBlack.svg?external';
 import OntLogo from './images/ont.svg?inline';
-import favicon from '!file-loader?name=[name].[ext]!images/favicon-ont.ico';
+import favicon from 'images/favicon-ont.png';
 
 import RobotoRegularEOT from './fonts/Roboto-Regular.eot';
 import RobotoRegularWOFF from './fonts/Roboto-Regular.woff';

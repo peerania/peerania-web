@@ -22,10 +22,15 @@ import {
   VOTE_TO_DELETE_TAG,
 } from './constants';
 
-export const isSingleCommunityWebsite = () =>
-  +Object.keys(communitiesConfig).find(
+export const isSingleCommunityWebsite = () => {
+  if (communitiesConfig == null && communitiesConfig == undefined) {
+    return null;
+  }
+
+  return +Object.keys(communitiesConfig).find(
     id => communitiesConfig[id].origin === window.location.origin,
   );
+};
 
 export const singleCommunityStyles = () =>
   _get(communitiesConfig, [isSingleCommunityWebsite(), 'styles'], {});

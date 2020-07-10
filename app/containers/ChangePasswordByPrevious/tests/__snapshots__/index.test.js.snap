@@ -6,7 +6,7 @@ exports[`<ChangePasswordByPrevious /> render 1`] = `
     closeModal={[MockFunction]}
     show={false}
   />
-  <button
+  <Button
     onClick={[MockFunction]}
   />
 </React.Fragment>

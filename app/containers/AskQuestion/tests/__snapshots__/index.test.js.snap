@@ -12,6 +12,7 @@ exports[`AskQuestion render 1`] = `
     communities={Array []}
     form="app/AskQuestion/ASK_QUESTION_FORM"
     formTitle="Ask question"
+    locale="en"
     questionLoading={false}
     sendQuestion={[MockFunction]}
     submitButtonId="app_post_question_button"

@@ -14,23 +14,7 @@ exports[`downVoteWorker answerId > 0 isDownVoted is true test 1`] = `"{\\"id\\":
 
 exports[`postAnswerWorker step, POST_ANSWER_SUCCESS 1`] = `
 Object {
-  "answers": Array [
-    Object {
-      "comments": Array [],
-      "content": 1,
-      "history": Array [],
-      "id": 1,
-      "isItWrittenByMe": true,
-      "post_time": "15151515",
-      "properties": Array [],
-      "rating": 0,
-      "user": "user",
-      "userInfo": Object {
-        "user": "user",
-      },
-      "votingStatus": Object {},
-    },
-  ],
+  "answers": Array [],
 }
 `;
 

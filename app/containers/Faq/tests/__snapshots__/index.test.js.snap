@@ -20,7 +20,7 @@ exports[`<Faq /> test 1`] = `
     className="flex-grow-1"
   >
     <UNDEFINED />
-    <UNDEFINED
+    <Content
       content={
         Object {
           "blocks": Array [

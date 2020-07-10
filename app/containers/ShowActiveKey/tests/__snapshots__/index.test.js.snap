@@ -12,7 +12,7 @@ exports[`<ShowActiveKey /> render 1`] = `
       showActiveKeyProcessing={false}
     />
   </UNDEFINED>
-  <button
+  <Button
     onClick={[MockFunction]}
   />
 </React.Fragment>
