@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<EosioProvider /> render, @initializing is false 1`] = `<div />`;
-
-exports[`<EosioProvider /> render, @initializing is true 1`] = `
+exports[`<EosioProvider /> should render and match the snapshot initializing is false 1`] = `
 <div>
-  <UNDEFINED />
+  children
+</div>
+`;
+
+exports[`<EosioProvider /> should render and match the snapshot initializing is true 1`] = `
+<div>
+  children
 </div>
 `;

@@ -1,9 +1,17 @@
+import React from 'react';
 import { fromJS } from 'immutable';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
 import { EditProfilePage } from '../index';
 
-const cmp = new EditProfilePage();
+// const cmp = new EditProfilePage();
 
-cmp.props = {
+const props = {
   saveProfileDispatch: jest.fn(),
   setDefaultReducerDispatch: jest.fn(),
   profile: {
@@ -24,7 +32,13 @@ cmp.props = {
 };
 
 describe('<EditProfilePage>', () => {
-  describe('componentWillUnmount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentWillUnmount', () => {
     it('test', () => {
       cmp.componentWillUnmount();
       expect(cmp.props.setDefaultReducerDispatch).toHaveBeenCalled();
@@ -45,11 +59,18 @@ describe('<EditProfilePage>', () => {
         userKey: cmp.props.match.params.id,
       });
     });
-  });
+  });*/
 
-  describe('render', () => {
-    it('test', () => {
-      expect(cmp.render()).toMatchSnapshot();
-    });
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <EditProfilePage {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

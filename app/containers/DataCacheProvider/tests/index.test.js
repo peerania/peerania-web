@@ -1,9 +1,16 @@
 import React from 'react';
-import { DataCacheProvider } from '../index';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 
-const cmp = new DataCacheProvider();
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
 
-cmp.props = {
+import DataCacheProvider from '../index';
+import EosioProvider from 'containers/EosioProvider';
+
+// const cmp = new DataCacheProvider();
+
+const props = {
   getCommunitiesWithTagsDispatch: jest.fn(),
   getStatDispatch: jest.fn(),
   getFaqDispatch: jest.fn(),
@@ -11,7 +18,13 @@ cmp.props = {
 };
 
 describe('<DataCacheProvider />', () => {
-  it('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*it('componentDidMount', () => {
     expect(cmp.props.getCommunitiesWithTagsDispatch).toHaveBeenCalledTimes(0);
     expect(cmp.props.getStatDispatch).toHaveBeenCalledTimes(0);
     expect(cmp.props.getFaqDispatch).toHaveBeenCalledTimes(0);
@@ -21,9 +34,20 @@ describe('<DataCacheProvider />', () => {
     expect(cmp.props.getStatDispatch).toHaveBeenCalledTimes(1);
     expect(cmp.props.getCommunitiesWithTagsDispatch).toHaveBeenCalledTimes(1);
     expect(cmp.props.getFaqDispatch).toHaveBeenCalledTimes(1);
-  });
+  });*/
 
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <DataCacheProvider {...props}>
+            <div />
+          </DataCacheProvider>
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

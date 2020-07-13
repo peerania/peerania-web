@@ -1,7 +1,18 @@
-import { EditAnswer } from '../index';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 
-const cmp = new EditAnswer();
-cmp.props = {
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
+import EditAnswer from '../index';
+
+const child = <div>children</div>;
+React.Children.only = jest.fn().mockImplementation(() => child);
+
+// const cmp = new EditAnswer();
+const props = {
   match: {
     params: {
       questionid: 1,
@@ -9,13 +20,19 @@ cmp.props = {
     },
   },
   locale: 'en',
-  answerLoading: false,
+  // answerLoading: false,
   editAnswerDispatch: jest.fn(),
   getAnswerDispatch: jest.fn(),
 };
 
 describe('EditAnswer', () => {
-  describe('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentDidMount', () => {
     cmp.componentDidMount();
 
     expect(cmp.props.getAnswerDispatch).toHaveBeenCalledWith(
@@ -33,17 +50,33 @@ describe('EditAnswer', () => {
       cmp.props.match.params.questionid,
       cmp.props.match.params.answerid,
     );
-  });
+  });*/
 
-  describe('render test', () => {
-    it('answerLoading is falsy', () => {
-      cmp.props.answerLoading = false;
-      expect(cmp.render()).toMatchSnapshot();
+  describe('should render and match the snapshot', () => {
+    it('answerLoading is true', () => {
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditAnswer {...props} answerLoading={true} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
-    it('answerLoading is true', () => {
-      cmp.props.answerLoading = true;
-      expect(cmp.render()).toMatchSnapshot();
+    it('answerLoading is false', () => {
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditAnswer {...props} answerLoading={false} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

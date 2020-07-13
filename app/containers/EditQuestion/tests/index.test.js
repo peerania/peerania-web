@@ -1,7 +1,18 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
 import { EditQuestion } from '../index';
 
-const cmp = new EditQuestion();
-cmp.props = {
+const child = <div>children</div>;
+React.Children.only = jest.fn().mockImplementation(() => child);
+
+// const cmp = new EditQuestion();
+const props = {
   match: {
     params: {
       questionid: 1,
@@ -19,7 +30,13 @@ cmp.props = {
 };
 
 describe('EditQuestion', () => {
-  describe('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentDidMount', () => {
     cmp.componentDidMount();
 
     expect(cmp.props.getAskedQuestionDispatch).toHaveBeenCalledWith(
@@ -38,30 +55,66 @@ describe('EditQuestion', () => {
       },
       cmp.props.match.params.questionid,
     );
-  });
+  });*/
 
-  describe('render test', () => {
+  describe('should render and match the snapshot', () => {
     it('questionLoading is falsy', () => {
-      cmp.props.questionLoading = false;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionLoading = false;
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('questionLoading is true', () => {
-      cmp.props.questionLoading = true;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionLoading = true;
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('question is null', () => {
-      cmp.props.question = null;
-      expect(cmp.render()).toMatchSnapshot();
+      props.question = null;
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('question is NOT null', () => {
-      cmp.props.question = {
+      props.question = {
         title: 'title',
         content: 'content',
       };
-      expect(cmp.render()).toMatchSnapshot();
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <EditQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

@@ -1,14 +1,24 @@
-import { scrollToSection } from 'utils/animation';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
 import { HomePage } from '../index';
+
+import { scrollToSection } from 'utils/animation';
+
 import { EMAIL_FIELD } from '../constants';
 
 jest.mock('utils/animation', () => ({
   scrollToSection: jest.fn(),
 }));
 
-const cmp = new HomePage();
+// const cmp = new HomePage();
 
-cmp.props = {
+const props = {
   locale: 'en',
   account: 'user1',
   checkEmailDispatch: jest.fn(),
@@ -27,7 +37,13 @@ window.$ = jest.fn(() => ({
 }));
 
 describe('HomePage', () => {
-  describe('checkEmail', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('checkEmail', () => {
     const val = new Map();
     const email = 'email';
 
@@ -67,11 +83,18 @@ describe('HomePage', () => {
       expect(window.$).toHaveBeenCalledWith(window);
       expect(off).toHaveBeenCalled();
     });
-  });
+  });*/
 
-  describe('render', () => {
-    it('test', () => {
-      expect(cmp.render()).toMatchSnapshot();
-    });
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <HomePage {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

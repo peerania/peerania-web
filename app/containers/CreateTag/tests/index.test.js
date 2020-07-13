@@ -1,8 +1,28 @@
-import { CreateTag } from '../index';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import CreateTag from '../index';
+import EosioProvider from 'containers/EosioProvider';
+
 import { NAME_FIELD, DESCRIPTION_FIELD, FORM_COMMUNITY } from '../constants';
 
-const cmp = new CreateTag();
-cmp.props = {
+// const cmp = new CreateTag();
+// cmp.props = {
+//   locale: 'en',
+//   match: {
+//     params: {
+//       communityid: 1,
+//     },
+//   },
+//   createTagLoading: false,
+//   suggestTagDispatch: jest.fn(),
+//   communities: [{ id: 1 }, { id: 2 }],
+// };
+const props = {
   locale: 'en',
   match: {
     params: {
@@ -15,7 +35,13 @@ cmp.props = {
 };
 
 describe('<CreateTag />', () => {
-  it('createTag', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*it('createTag', () => {
     const obj0 = new Map();
     const obj1 = jest.fn();
     const obj2 = {
@@ -35,9 +61,19 @@ describe('<CreateTag />', () => {
 
     cmp.createTag(obj0, obj1, obj2);
     expect(cmp.props.suggestTagDispatch).toHaveBeenCalledWith(tag, obj2.reset);
-  });
+  });*/
 
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <CreateTag {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<LanguageProvider /> should render and match the snapshot 1`] = `
+<div>
+  <div
+    class="HeightWidthCentered__Wrapper-hb2oln-0 hvbKrn"
+  >
+    <div
+      class="d-flex"
+    >
+      <div
+        class="Circle-jolu9z-0 czelAb"
+      />
+      <div
+        class="Circle-jolu9z-0 dCZrqO"
+      />
+      <div
+        class="Circle-jolu9z-0 dNCZdJ"
+      />
+      <div
+        class="Circle-jolu9z-0 kgVfzR"
+      />
+      <div
+        class="Circle-jolu9z-0 gaWZkN"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<LanguageProvider /> should render its children 1`] = `
 <IntlProvider
   locale="en"

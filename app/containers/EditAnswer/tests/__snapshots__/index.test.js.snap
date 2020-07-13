@@ -1,17 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditAnswer render test answerLoading is falsy 1`] = `
+exports[`EditAnswer should render and match the snapshot answerLoading is false 1`] = `
 <div>
-  <Connect(NotFound)
-    withSeo={false}
-  />
+  children
 </div>
 `;
 
-exports[`EditAnswer render test answerLoading is true 1`] = `
+exports[`EditAnswer should render and match the snapshot answerLoading is true 1`] = `
 <div>
-  <Connect(NotFound)
-    withSeo={false}
-  />
+  children
 </div>
 `;
