@@ -50,8 +50,10 @@ const SubHeaderLogo = styled.div`
 `.withComponent(Link);
 
 const LogoCenterMenuRight = () => {
+  const singleCommId = isSingleCommunityWebsite(communitiesConfig);
+
   const src = singleCommunityStyles().withoutSubHeader
-    ? communitiesConfig[isSingleCommunityWebsite()].src
+    ? communitiesConfig[singleCommId].src
     : peeranhaLogo;
   
   const { links, styles } = singleCommunityStyles().customSubHeaderConfig;

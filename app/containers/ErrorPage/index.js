@@ -16,6 +16,8 @@ import { translationMessages } from 'i18n';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
+import communitiesConfig from 'communities-config';
+
 import commonMessages from 'common-messages';
 import * as routes from 'routes-config';
 import { TEXT_PRIMARY } from 'style-constants';
@@ -35,7 +37,7 @@ import Span from 'components/Span';
 
 import errorPageMessages from './messages';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const NotFound = ({ locale, withSeo = true }) => (
   <React.Fragment>

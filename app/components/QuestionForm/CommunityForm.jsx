@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form/immutable';
 import { intlShape } from 'react-intl';
 
+import communitiesConfig from 'communities-config';
+
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 
 import { requiredForObjectField } from 'components/FormFields/validate';
@@ -12,7 +14,7 @@ import { FORM_COMMUNITY, FORM_TAGS } from './constants';
 
 import messages from './messages';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const CommunityForm = ({ intl, communities, change, questionLoading }) => {
   const onChange = useCallback(() => change(FORM_TAGS, ''), [change]);

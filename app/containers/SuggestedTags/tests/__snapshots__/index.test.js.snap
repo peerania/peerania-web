@@ -1,44 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SuggestedTags render 1`] = `
+exports[`SuggestedTags should render and match the snapshot 1`] = `
 <div>
-  <UNDEFINED
-    description="Suggested tags | Description"
-    keywords={Array []}
-    language="en"
-    title="Suggested tags"
-  />
-  <withReducer(withSaga(Connect(Tags)))
-    Aside={
-      <UNDEFINED
-        existingTags={
-          Array [
-            Object {
-              "id": 1,
-            },
-            Object {
-              "id": 2,
-            },
-          ]
-        }
+  <div
+    class="HeightWidthCentered__Wrapper-hb2oln-0 hvbKrn"
+  >
+    <div
+      class="d-flex"
+    >
+      <div
+        class="Circle-jolu9z-0 czelAb"
       />
-    }
-    Content={
-      <UNDEFINED
-        communityId={1}
-        isLastFetch={false}
-        loadMoreTags={[Function]}
-        suggestedTagsLoading={false}
+      <div
+        class="Circle-jolu9z-0 dCZrqO"
       />
-    }
-    communityId={1}
-    currentCommunity={
-      Object {
-        "id": 1,
-        "tags": Array [],
-      }
-    }
-    sortTags={[Function]}
-  />
+      <div
+        class="Circle-jolu9z-0 dNCZdJ"
+      />
+      <div
+        class="Circle-jolu9z-0 kgVfzR"
+      />
+      <div
+        class="Circle-jolu9z-0 gaWZkN"
+      />
+    </div>
+  </div>
 </div>
 `;

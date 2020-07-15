@@ -1,9 +1,18 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
+import EosioProvider from 'containers/EosioProvider';
 import { Wallet } from '../index';
 
-const cmp = new Wallet();
+// const cmp = new Wallet();
+let props = {};
 
 beforeEach(() => {
-  cmp.props = {
+  props = {
     balance: null,
     locale: 'en',
     account: null,
@@ -16,11 +25,26 @@ beforeEach(() => {
 });
 
 describe('Wallet', () => {
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
   });
 
-  describe('componentDidMount', () => {
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <Wallet {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
+  });
+
+  /*describe('componentDidMount', () => {
     it('account truthy', () => {
       expect(cmp.props.getWeekStatDispatch).toHaveBeenCalledTimes(0);
 
@@ -73,5 +97,5 @@ describe('Wallet', () => {
 
       expect(cmp.props.getWeekStatDispatch).toHaveBeenCalledTimes(0);
     });
-  });
+  });*/
 });

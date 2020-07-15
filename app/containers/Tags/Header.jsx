@@ -1,8 +1,10 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+
 import * as routes from 'routes-config';
 import { TEXT_SECONDARY, BORDER_PRIMARY } from 'style-constants';
+import communitiesConfig from 'communities-config';
 
 import commonMessages from 'common-messages';
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
@@ -30,7 +32,7 @@ import { GO_TO_CREATE_TAG_SCREEN_BUTTON_ID } from './constants';
 
 const tagsRoute = routes.tags();
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const Button = ({ sorting }) => (
   <Span className="d-inline-flex align-items-center mr-2 text-capitalize" bold>

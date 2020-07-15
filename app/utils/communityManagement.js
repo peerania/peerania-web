@@ -22,18 +22,18 @@ import {
   VOTE_TO_DELETE_TAG,
 } from './constants';
 
-export const isSingleCommunityWebsite = () => {
-  if (communitiesConfig == null && communitiesConfig == undefined) {
+export function isSingleCommunityWebsite(config) {
+  if (config == null && config == undefined) {
     return null;
   }
 
-  return +Object.keys(communitiesConfig).find(
-    id => communitiesConfig[id].origin === window.location.origin,
+  return +Object.keys(config).find(
+    id => config[id].origin === window.location.origin,
   );
 };
 
 export const singleCommunityStyles = () =>
-  _get(communitiesConfig, [isSingleCommunityWebsite(), 'styles'], {});
+  _get(communitiesConfig, [isSingleCommunityWebsite(communitiesConfig), 'styles'], {});
 
 export const singleCommunityColors = () =>
   _get(singleCommunityStyles(), 'colors', {});

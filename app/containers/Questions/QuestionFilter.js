@@ -13,6 +13,7 @@ import {
   BORDER_SECONDARY,
   BORDER_RADIUS_L,
 } from 'style-constants';
+import communitiesConfig from 'communities-config';
 
 import { setCookie } from 'utils/cookie';
 import { QUESTION_FILTER } from './constants';
@@ -43,7 +44,7 @@ const Button = styled.button`
     active ? `0 0 0 3px rgba(${BORDER_PRIMARY_RGB}, 0.4)` : `none`};
 `;
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const cookieFilterSetter = value => ({
   name: QUESTION_FILTER,

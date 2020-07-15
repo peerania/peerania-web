@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 
 import commonMessages from 'common-messages';
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 import { TEXT_PRIMARY } from 'style-constants';
 
 import notFoundImage from 'images/404.svg?inline';
@@ -33,7 +34,7 @@ import Base from 'components/Base/BaseRounded';
 
 import messages from './messages';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 export const Box = Base.extend`
   text-align: center;

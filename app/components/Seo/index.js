@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { appLocales } from 'i18n';
 
+import communitiesConfig from 'communities-config';
+
 import {
   isSingleCommunityWebsite,
   singleCommunityStyles,
@@ -96,7 +98,7 @@ Seo.propTypes = {
 
 export default React.memo(
   connect(state => {
-    const single = isSingleCommunityWebsite();
+    const single = isSingleCommunityWebsite(communitiesConfig);
     const communities = selectCommunities()(state);
     if (!single || !communities.length) {
       return { communityName: '' };

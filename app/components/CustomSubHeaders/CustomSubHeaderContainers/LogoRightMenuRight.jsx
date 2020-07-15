@@ -49,7 +49,7 @@ const SubHeaderLogo = styled.div`
 
 const LogoRightMenuRight = () => {
   const src = singleCommunityStyles().withoutSubHeader
-    ? communitiesConfig[isSingleCommunityWebsite()].src
+    ? communitiesConfig[isSingleCommunityWebsite(communitiesConfig)].src
     : peeranhaLogo;
 
   const { links, styles } = singleCommunityStyles().customSubHeaderConfig;

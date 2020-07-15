@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
+import communitiesConfig from 'communities-config';
+
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 import OutlinedButton from 'components/Button/Outlined/InfoMedium';
 
@@ -13,7 +15,7 @@ import messages from './messages';
 import { FOLLOW_BUTTON, UNFOLLOW_BUTTON } from './constants';
 import { makeSelectProfileInfo } from '../AccountProvider/selectors';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const CustomButton = styled.div`
   margin-top: 16px;

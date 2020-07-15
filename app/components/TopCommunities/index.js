@@ -10,6 +10,7 @@ import {
   BORDER_SECONDARY,
   TEXT_PRIMARY,
 } from 'style-constants';
+import communitiesConfig from 'communities-config';
 
 import * as routes from 'routes-config';
 import messages from 'common-messages';
@@ -28,7 +29,7 @@ import BaseRoundedNoPadding from 'components/Base/BaseRoundedNoPadding';
 import MediumImage from 'components/Img/MediumImage';
 import Grid from 'components/Grid';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const FrontSide = styled.div`
   > div {

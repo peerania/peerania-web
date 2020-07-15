@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { bindActionCreators, compose } from 'redux';
 import { translationMessages } from 'i18n';
+
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -60,7 +62,7 @@ import ShowMoreButton from './Content/ShowMoreButton';
 import { QUESTION_FILTER } from './constants';
 
 const feed = routes.feed();
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 export const Questions = ({
   locale,

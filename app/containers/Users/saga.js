@@ -1,4 +1,7 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
+
+import communitiesConfig from 'communities-config';
+
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 import { getUserProfileSuccess } from 'containers/DataCacheProvider/actions';
 
@@ -9,7 +12,7 @@ import { selectLimit } from './selectors';
 export function* getUsersWorker({ loadMore, fetcher }) {
   try {
     const limit = yield select(selectLimit());
-    const singleCommunityId = isSingleCommunityWebsite();
+    const singleCommunityId = isSingleCommunityWebsite(communitiesConfig);
     let users = [];
     let more = true;
     while (users.length < limit && more) {

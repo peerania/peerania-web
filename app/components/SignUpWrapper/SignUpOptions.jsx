@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import * as routes from 'routes-config';
-import communitiesConfig from 'communities-config';
 import { LINK_COLOR } from 'style-constants';
 
 import peeranhaLogo from 'images/LogoBlack.svg?inline';
@@ -15,7 +14,6 @@ import commonMessages from 'common-messages';
 import messages from 'containers/SignUp/messages';
 
 import {
-  isSingleCommunityWebsite,
   singleCommunityStyles,
 } from 'utils/communityManagement';
 
@@ -91,7 +89,6 @@ export const Logo = styled.span`
   background-image: url(${({ src }) => src});
 `;
 
-const single = isSingleCommunityWebsite();
 const styles = singleCommunityStyles();
 
 const LeftMenu = ({ faqQuestions }) => (

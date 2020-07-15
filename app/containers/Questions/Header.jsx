@@ -5,6 +5,7 @@ import * as routes from 'routes-config';
 
 import { injectIntl, intlShape } from 'react-intl';
 import messages from 'common-messages';
+import communitiesConfig from 'communities-config';
 
 import FollowCommunityButton from 'containers/FollowCommunityButton/DefaultButton';
 
@@ -24,7 +25,7 @@ import QuestionFilter from './QuestionFilter';
 
 import { selectQuestions, selectTopQuestionsLoaded } from './selectors';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 export const Header = ({
   intl,

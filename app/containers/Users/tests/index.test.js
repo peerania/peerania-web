@@ -1,9 +1,18 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
+import EosioProvider from 'containers/EosioProvider';
 import { Users } from '../index';
 
-const cmp = new Users();
+// const cmp = new Users();
+let props = {};
 
 beforeEach(() => {
-  cmp.props = {
+  props = {
     locale: 'en',
     getUsersDispatch: jest.fn(),
     users: [],
@@ -18,7 +27,13 @@ beforeEach(() => {
 });
 
 describe('Users', () => {
-  describe('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentDidMount', () => {
     it('fetcher was initialized', () => {
       cmp.props.eosService = {};
 
@@ -99,9 +114,18 @@ describe('Users', () => {
       cmp.dropdownFilter(sorting);
       expect(cmp.props.getUsersDispatch).toHaveBeenCalledTimes(0);
     });
-  });
+  });*/
 
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <Users {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

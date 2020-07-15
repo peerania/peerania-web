@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form/immutable';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
+import communitiesConfig from 'communities-config';
+
 import commonMessages from 'common-messages';
 import { BORDER_PRIMARY, LINK_COLOR_SECONDARY } from 'style-constants';
 
@@ -40,7 +42,7 @@ import TitleForm from './TitleForm';
 import ContentForm from './ContentForm';
 import TagsForm from './TagsForm';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const SuggestTag = memo(({ redirectToCreateTagDispatch, formValues }) => {
   const communityId = useMemo(() => formValues?.[FORM_COMMUNITY]?.value ?? 0, [

@@ -7,6 +7,8 @@ import { createStructuredSelector } from 'reselect';
 
 import messages from 'common-messages';
 
+import communitiesConfig from 'communities-config';
+
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
 import { selectCommunities } from 'containers/DataCacheProvider/selectors';
 import { makeSelectFollowedCommunities } from 'containers/AccountProvider/selectors';
@@ -24,7 +26,7 @@ import CustomOption from './CustomOption';
 import Group from './Group';
 import ManageMyCommunities from './ManageMyCommunities';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const Wrapper = styled.div`
   ${MenuStyled} {

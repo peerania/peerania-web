@@ -1,56 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuestionsWithAnswersOfUser render questions[0] TRUE 1`] = `
-<InfinityLoader
-  infinityOff={false}
-  isLastFetch={false}
-  isLoading={true}
-  loadNextPaginatedData={[Function]}
->
-  <div
-    className="className"
-  >
-    <UNDEFINED
-      userId="userId"
-    />
-    <QuestionsWithAnswersList
-      communities={Array []}
-      locale="en"
-      questions={
-        Array [
-          Object {
-            "acceptedAnswer": false,
-            "answers": Array [],
-            "communities": Array [],
-            "community_id": 123,
-            "id": "id",
-            "locale": "en",
-            "myPostRating": 100,
-            "myPostTime": 1550837750334,
-            "title": "title",
-          },
-        ]
-      }
-    />
-    <UNDEFINED />
-  </div>
-</InfinityLoader>
+exports[`QuestionsWithAnswersOfUser should render and match the snapshot questions[0] TRUE 1`] = `
+<div>
+  Children
+</div>
 `;
 
-exports[`QuestionsWithAnswersOfUser render questionsLoading TRUE 1`] = `
-<InfinityLoader
-  infinityOff={false}
-  isLastFetch={false}
-  isLoading={true}
-  loadNextPaginatedData={[Function]}
->
-  <div
-    className="className"
-  >
-    <UNDEFINED
-      userId="userId"
-    />
-    <UNDEFINED />
-  </div>
-</InfinityLoader>
+exports[`QuestionsWithAnswersOfUser should render and match the snapshot questionsLoading TRUE 1`] = `
+<div>
+  Children
+</div>
 `;

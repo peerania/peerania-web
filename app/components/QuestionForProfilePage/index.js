@@ -13,6 +13,7 @@ import {
   BORDER_RADIUS_M,
   BORDER_RADIUS_L,
 } from 'style-constants';
+import communitiesConfig from 'communities-config';
 
 import commonMessages from 'common-messages';
 
@@ -35,7 +36,7 @@ import {
 
 import QuestionCommunity from './QuestionCommunity';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const BaseStyled = Base.extend`
   position: relative;

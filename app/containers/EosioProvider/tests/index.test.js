@@ -30,9 +30,7 @@ describe('<EosioProvider />', () => {
         container: { firstChild },
       } = render(
         <Provider store={store}>
-          <EosioProvider {...props}>
-            <div />
-          </EosioProvider>
+          <EosioProvider {...props} />
         </Provider>,
       );
       expect(firstChild).toMatchSnapshot();
@@ -44,9 +42,7 @@ describe('<EosioProvider />', () => {
         container: { firstChild },
       } = render(
         <Provider store={store}>
-          <EosioProvider {...props}>
-            <div />
-          </EosioProvider>
+          <EosioProvider {...props} />
         </Provider>,
       );
       expect(firstChild).toMatchSnapshot();

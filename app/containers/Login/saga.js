@@ -2,6 +2,7 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { translationMessages } from 'i18n';
 
 import createdHistory from 'createdHistory';
+import communitiesConfig from 'communities-config';
 import * as routes from 'routes-config';
 
 import { setCookie } from 'utils/cookie';
@@ -227,7 +228,7 @@ export function* finishRegistrationWorker({ val }) {
 
     yield call(getCurrentAccountWorker);
 
-    const singleCommunityId = isSingleCommunityWebsite();
+    const singleCommunityId = isSingleCommunityWebsite(communitiesConfig);
 
     if (singleCommunityId) {
       yield call(followCommunity, eosService, singleCommunityId, accountName);
@@ -242,7 +243,7 @@ export function* finishRegistrationWorker({ val }) {
 export function* redirectToFeedWorker() {
   const isLeftMenuVisible = yield select(selectIsMenuVisible());
   const profileInfo = yield select(makeSelectProfileInfo());
-  const singleCommunityId = isSingleCommunityWebsite();
+  const singleCommunityId = isSingleCommunityWebsite(communitiesConfig);
 
   if (isLeftMenuVisible) {
     yield put(hideLeftMenu());

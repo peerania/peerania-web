@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import communitiesConfig from 'communities-config';
+
 import {
   getFollowedCommunities,
   isSingleCommunityWebsite,
@@ -11,7 +14,7 @@ import A, { ADefault } from 'components/A';
 import Span from 'components/Span';
 import Img from 'components/Img';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const QuestionCommunity = ({ communities, communityId, className }) => {
   if (!communities[0]) {

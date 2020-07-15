@@ -1,14 +1,24 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
 import * as routes from 'routes-config';
 import { scrollToSection } from 'utils/animation';
+
+import EosioProvider from 'containers/EosioProvider';
 import { ViewQuestion } from '../index';
 
 jest.mock('components/TextEditor');
 
-const cmp = new ViewQuestion();
+// const cmp = new ViewQuestion();
 const setTimeout = jest.fn();
+let props = {};
 
 beforeEach(() => {
-  cmp.props = {
+  props = {
     translations: {},
     account: 'user1',
     locale: 'en',
@@ -57,7 +67,13 @@ jest.mock('utils/animation', () => ({
 Object.defineProperty(global, 'setTimeout', { value: setTimeout });
 
 describe('<ViewQuestion />', () => {
-  describe('componentWillReceiveProps', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentWillReceiveProps', () => {
     it('scroll', () => {
       const nextProps = {
         questionData: {},
@@ -113,23 +129,53 @@ describe('<ViewQuestion />', () => {
       cmp.componentWillMount();
       expect(cmp.props.resetStoreDispatch).toHaveBeenCalled();
     });
-  });
+  });*/
 
-  describe('render', () => {
+  describe('should render and match the snapshot', () => {
     it('!@questionDataLoading && @questionData', () => {
-      cmp.props.questionDataLoading = false;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionDataLoading = false;
+
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <ViewQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('!@questionDataLoading && !@questionData', () => {
-      cmp.props.questionDataLoading = false;
-      cmp.props.questionData = null;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionDataLoading = false;
+      props.questionData = null;
+
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <ViewQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('@questionDataLoading is true', () => {
-      cmp.props.questionDataLoading = true;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionDataLoading = true;
+
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <ViewQuestion {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

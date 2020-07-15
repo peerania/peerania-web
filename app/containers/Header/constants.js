@@ -1,9 +1,11 @@
+import communitiesConfig from 'communities-config';
+
 import {
   isSingleCommunityWebsite,
   singleCommunityStyles,
 } from 'utils/communityManagement';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 const styles = singleCommunityStyles();
 
 export const HEADER_ID = 'containers_header_HEADER_ID';

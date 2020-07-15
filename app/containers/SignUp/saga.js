@@ -3,6 +3,7 @@ import { call, put, takeLatest, select, take } from 'redux-saga/effects';
 import { translationMessages } from 'i18n';
 import createdHistory from 'createdHistory';
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import {
   registerInit,
@@ -340,7 +341,7 @@ export function* signUpWithScatterWorker({ val }) {
 
     yield call(loginWithScatterWorker);
 
-    const singleCommId = isSingleCommunityWebsite();
+    const singleCommId = isSingleCommunityWebsite(communitiesConfig);
 
     if (singleCommId) {
       yield call(followCommunity, eosService, singleCommId, accountName);

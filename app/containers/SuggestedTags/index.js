@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { translationMessages } from 'i18n';
 import { bindActionCreators } from 'redux';
 
+import communitiesConfig from 'communities-config';
+
 import {
   getFollowedCommunities,
   isSingleCommunityWebsite,
@@ -30,7 +32,7 @@ import messages from './messages';
 import Content from './Content';
 import Aside from './Aside';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 export const SuggestedTags = ({
   locale,

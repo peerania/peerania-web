@@ -1,8 +1,19 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
 import { QuestionsWithAnswersOfUser } from '../index';
 
-const cmp = new QuestionsWithAnswersOfUser();
+const children = <div>Children</div>;
+React.Children.only = jest.fn().mockImplementation(() => children);
 
-cmp.props = {
+// const cmp = new QuestionsWithAnswersOfUser();
+
+const props = {
   isLastFetch: false,
   questionsLoading: false,
   userId: 'userId',
@@ -16,7 +27,13 @@ cmp.props = {
 };
 
 describe('QuestionsWithAnswersOfUser', () => {
-  describe('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentDidMount', () => {
     cmp.componentDidMount();
     expect(cmp.props.getQuestionsDispatch).toHaveBeenCalledWith(
       cmp.props.userId,
@@ -33,16 +50,26 @@ describe('QuestionsWithAnswersOfUser', () => {
     expect(cmp.props.getQuestionsDispatch).toHaveBeenCalledWith(
       cmp.props.userId,
     );
-  });
+  });*/
 
-  describe('render', () => {
+  describe('should render and match the snapshot', () => {
     it('questionsLoading TRUE', () => {
-      cmp.props.questionsLoading = true;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionsLoading = true;
+
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <QuestionsWithAnswersOfUser {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('questions[0] TRUE', () => {
-      cmp.props.questions = [
+      props.questions = [
         {
           myPostRating: 100,
           title: 'title',
@@ -56,7 +83,16 @@ describe('QuestionsWithAnswersOfUser', () => {
         },
       ];
 
-      expect(cmp.render()).toMatchSnapshot();
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <QuestionsWithAnswersOfUser {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

@@ -6,10 +6,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import * as routes from 'routes-config';
-import communitiesConfig from 'communities-config';
 
 import {
-  isSingleCommunityWebsite,
   singleCommunityStyles,
 } from 'utils/communityManagement';
 
@@ -35,7 +33,6 @@ import {
 import SignUpWrapper from './index';
 import { Li, P, CommunityLogoWrapper, CommunityLogoDescr, Logo } from './SignUpOptions';
 
-const single = isSingleCommunityWebsite();
 const styles = singleCommunityStyles();
 
 const LeftMenu = ({ faqQuestions, route }) => (

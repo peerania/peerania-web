@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { translationMessages } from 'i18n';
 import { compose, bindActionCreators } from 'redux';
 
+import communitiesConfig from 'communities-config';
+
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
@@ -39,7 +41,7 @@ import Form from './Form';
 import Tips from './Tips';
 import Header from './Header';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const CreateTag = ({
   locale,

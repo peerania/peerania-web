@@ -1,9 +1,21 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
+import EosioProvider from 'containers/EosioProvider';
 import { Tags } from '../index';
 
-const cmp = new Tags();
+const children = <div>Children</div>;
+React.Children.only = jest.fn().mockImplementation(() => children);
+
+// const cmp = new Tags();
+let props = {};
 
 beforeEach(() => {
-  cmp.props = {
+  props = {
     locale: 'en',
     sorting: 'id',
     profile: {},
@@ -23,7 +35,13 @@ beforeEach(() => {
 });
 
 describe('<Tags />', () => {
-  it('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*it('componentDidMount', () => {
     const {
       communityId,
       getSuggestedTagsDispatch,
@@ -59,17 +77,37 @@ describe('<Tags />', () => {
         communityId: cmp.props.communityId,
       });
     });
-  });
+  });*/
 
-  describe('render', () => {
+  describe('should render and match the snapshot', () => {
     it('!currentCommunity.tags.length', () => {
-      cmp.props.currentCommunity.tags = [];
-      expect(cmp.render()).toMatchSnapshot();
+      props.currentCommunity.tags = [];
+      
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <Tags {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('currentCommunity.tags.length > 0', () => {
-      cmp.props.currentCommunity.tags = Array(1).fill({});
-      expect(cmp.render()).toMatchSnapshot();
+      props.currentCommunity.tags = Array(1).fill({});
+      
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <Tags {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

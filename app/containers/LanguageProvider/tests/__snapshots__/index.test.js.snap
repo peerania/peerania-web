@@ -27,13 +27,3 @@ exports[`<LanguageProvider /> should render and match the snapshot 1`] = `
   </div>
 </div>
 `;
-
-exports[`<LanguageProvider /> should render its children 1`] = `
-<IntlProvider
-  locale="en"
->
-  <div>
-    Children
-  </div>
-</IntlProvider>
-`;

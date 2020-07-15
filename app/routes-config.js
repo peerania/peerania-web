@@ -7,10 +7,11 @@
 /* eslint camelcase: 0, prettier/prettier: 0 */
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 import { REFERRAL_CODE_URI } from './containers/App/constants';
+import communitiesConfig from 'communities-config';
 
 const userRedirect = where => id => `/users/${id}${where}`;
 
-const singleCommId = isSingleCommunityWebsite();
+const singleCommId = isSingleCommunityWebsite(communitiesConfig);
 
 export const home = () => `/about`;
 

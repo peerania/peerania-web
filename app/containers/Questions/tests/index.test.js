@@ -1,17 +1,27 @@
 import { fromJS } from 'immutable';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import configureStore from 'configureStore';
+import createdHistory from 'createdHistory';
+
+import EosioProvider from 'containers/EosioProvider';
 import { Questions } from '../index';
 
-const cmp = new Questions();
+// const cmp = new Questions();
 const fetcher = {};
 
 window.BigInt = jest.fn().mockImplementation(x => x);
+const children = <div>Children</div>;
+React.Children.only = jest.fn().mockImplementation(() => children);
 
-cmp.props = {};
+let props = {};
 
 beforeEach(() => {
   jest.clearAllMocks();
-  cmp.fetcher = fetcher;
-  cmp.props = {
+  // cmp.fetcher = fetcher;
+  props = {
     locale: 'en',
     match: { params: { communityid: 1 } },
     followedCommunities: [1, 2],
@@ -30,7 +40,13 @@ beforeEach(() => {
 });
 
 describe('Questions', () => {
-  describe('componentDidMount', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*describe('componentDidMount', () => {
     it('test', () => {
       cmp.fetcher = null;
       cmp.props.parentPage = 'parentPage1';
@@ -164,17 +180,35 @@ describe('Questions', () => {
         next,
       );
     });
-  });
+  });*/
 
-  describe('snapshot test', () => {
-    it('@questionsLoading is falsy', () => {
-      cmp.props.questionsLoading = false;
-      expect(cmp.render()).toMatchSnapshot();
+  describe('should render and match the snapshot', () => {
+    it('@questionsLoading is false', () => {
+      props.questionsLoading = false;
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <Questions {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
 
     it('@questionsLoading is true', () => {
-      cmp.props.questionsLoading = true;
-      expect(cmp.render()).toMatchSnapshot();
+      props.questionsLoading = true;
+      const {
+        container: { firstChild },
+      } = render(
+        <Provider store={store}>
+          <EosioProvider>
+            <Questions {...props} />
+          </EosioProvider>
+        </Provider>,
+      );
+      expect(firstChild).toMatchSnapshot();
     });
   });
 });

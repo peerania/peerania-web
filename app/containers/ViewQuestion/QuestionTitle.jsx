@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import commonMessages from 'common-messages';
 import { FormattedMessage } from 'react-intl';
 
 import { BUTTON_COLOR } from 'style-constants';
+import communitiesConfig from 'communities-config';
 
 import checkIcon from 'images/okayGreen.svg?inline';
 import coinsIcon from 'images/coins.svg?external';
@@ -143,7 +145,7 @@ export const QuestionTitle = ({
           communityId={communityId}
           communities={communities}
         >
-          {!isSingleCommunityWebsite() ? (
+          {!isSingleCommunityWebsite(communitiesConfig) ? (
             <QuestionCommunity
               className="my-1"
               communities={communities}

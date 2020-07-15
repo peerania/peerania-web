@@ -38,7 +38,7 @@ import SearchForm from './SearchForm';
 
 import { HEADER_ID, SEARCH_FORM_ID } from './constants';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 const styles = singleCommunityStyles();
 
 export const LoginProfile = memo(

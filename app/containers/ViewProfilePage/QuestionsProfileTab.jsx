@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 
@@ -32,7 +33,7 @@ import bestAnswerIcon from 'images/bestAnswer.svg?inline';
 
 import Banner from './Banner';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const Rating = Span.extend`
   min-width: 40px;

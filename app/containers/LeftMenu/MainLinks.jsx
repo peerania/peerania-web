@@ -17,6 +17,7 @@ import {
 } from 'style-constants';
 
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 import messages from 'common-messages';
 
 import {
@@ -95,7 +96,7 @@ const Box = styled.div`
 const MainLinks = ({ profile }) => {
   const { pathname } = window.location;
   const route = pathname.split('/').filter(x => x)[0];
-  const singleCommId = +isSingleCommunityWebsite();
+  const singleCommId = +isSingleCommunityWebsite(communitiesConfig);
 
   return (
     <Box>

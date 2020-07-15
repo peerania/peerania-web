@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 
+import communitiesConfig from 'communities-config';
+
 import {
   getFollowedCommunities,
   isSingleCommunityWebsite,
@@ -41,7 +43,7 @@ export const Form = ({
 }) => (
   <FormBox onSubmit={handleSubmit(createTag)}>
     <Field
-      className={isSingleCommunityWebsite() ? 'd-none' : ''}
+      className={isSingleCommunityWebsite(communitiesConfig) ? 'd-none' : ''}
       name={FORM_COMMUNITY}
       component={CommunityField}
       disabled={createTagLoading}

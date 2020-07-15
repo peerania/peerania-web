@@ -13,6 +13,7 @@ import { translationMessages } from 'i18n';
 
 import createdHistory from 'createdHistory';
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import { getText } from 'utils/ipfs';
 
@@ -420,7 +421,7 @@ export function* deleteQuestionWorker({ questionId, buttonId }) {
 export function* getQuestionDataWorker({ questionId }) {
   try {
     const { account } = yield call(getParams);
-    const single = isSingleCommunityWebsite();
+    const single = isSingleCommunityWebsite(communitiesConfig);
 
     const questionData = yield call(getQuestionData, {
       questionId,

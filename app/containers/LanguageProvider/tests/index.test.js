@@ -14,7 +14,6 @@ import ConnectedLanguageProvider, { LanguageProvider } from '../index';
 import { translationMessages } from '../../../i18n';
 
 // const cmp = new LanguageProvider();
-
 const props = {
   locale: 'en',
   messages: {},

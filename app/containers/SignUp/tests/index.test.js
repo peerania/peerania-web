@@ -1,11 +1,18 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
+
 import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
 import * as routes from 'routes-config';
 
 import { generateKeys } from 'utils/web_integration/src/util/eos-keygen';
 import { generateMasterKey } from 'utils/web_integration/src/util/masterKeygen';
 
 import { SignUp } from '../index';
+import EosioProvider from 'containers/EosioProvider';
+
 import { EMAIL_FIELD } from '../constants';
 
 jest.mock('utils/web_integration/src/util/eos-keygen', () => ({
@@ -24,7 +31,9 @@ window.URL = {
   createObjectURL: jest.fn(),
 };
 
-const cmp = new SignUp();
+// const cmp = new SignUp();
+
+let props = {}
 
 beforeEach(() => {
   createdHistory.push.mockClear();
@@ -32,7 +41,7 @@ beforeEach(() => {
   generateMasterKey.mockClear();
   window.URL.createObjectURL.mockClear();
 
-  cmp.props = {
+  props = {
     locale: 'en',
     children: jest.fn(),
     showLoginModalDispatch: jest.fn(),
@@ -57,11 +66,26 @@ beforeEach(() => {
 });
 
 describe('SignUp', () => {
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
   });
 
-  it('getLinkToDownloadKeys', () => {
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <SignUp {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
+  });
+
+  /*it('getLinkToDownloadKeys', () => {
     const keys = { key1: 'key1', key2: 'key2' };
 
     const text = JSON.stringify({ keys });
@@ -173,5 +197,5 @@ describe('SignUp', () => {
       cmp.componentWillMount();
       expect(cmp.props.putKeysToStateDispatch).toHaveBeenCalledTimes(0);
     });
-  });
+  });*/
 });

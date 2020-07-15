@@ -6,6 +6,7 @@ import { TEXT_SECONDARY, TEXT_PRIMARY, BORDER_RADIUS_L } from 'style-constants';
 
 import messages from 'common-messages';
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import Base from 'components/Base';
 import Span from 'components/Span';
@@ -22,7 +23,7 @@ import {
   isSingleCommunityWebsite,
 } from 'utils/communityManagement';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const CommunityStyled = Base.extend`
   border-radius: ${BORDER_RADIUS_L};

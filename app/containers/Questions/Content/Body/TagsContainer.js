@@ -1,12 +1,14 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
+import communitiesConfig from 'communities-config';
+
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 
 import Tags from 'components/TagsList';
 import QuestionCommunity from 'components/QuestionForProfilePage/QuestionCommunity';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const TagsContainer = ({ communities, communityId, tags }) => (
   <div className="d-flex align-items-center flex-wrap">

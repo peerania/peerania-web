@@ -7,8 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+
 import createdHistory from 'createdHistory';
 import * as routes from 'routes-config';
+import communitiesConfig from 'communities-config';
 
 import userIcon from 'images/user.svg?inline';
 import messages from 'common-messages';
@@ -21,7 +23,7 @@ import MediumContainedButton from 'components/Button/Contained/InfoMedium';
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 
 const ButtonGroupForNotAuthorizedUser = ({ showLoginModal }) =>
-  !isSingleCommunityWebsite() ? (
+  !isSingleCommunityWebsite(communitiesConfig) ? (
     <>
       <LargeOutlinedButton
         className="d-none d-sm-flex"

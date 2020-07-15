@@ -2,13 +2,14 @@ import React, { useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import createdHistory from 'createdHistory';
+import communitiesConfig from 'communities-config';
 
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
 
 import * as routes from 'routes-config';
 import Input from 'components/Input';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const SearchForm = ({ placeholder, className, onBlur, searchFormId }) => {
   const [text, changeText] = useState('');

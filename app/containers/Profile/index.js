@@ -9,21 +9,18 @@ import Seo from 'components/Seo';
 import LoadingIndicator from 'components/LoadingIndicator/WidthCentered';
 
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
-
-import { getQuestions as getQuestionsWithAnsw } from 'containers/QuestionsWithAnswersOfUser/actions';
-import { getQuestions } from 'containers/QuestionsOfUser/actions';
-
 import {
   makeSelectAccount,
   makeSelectAccountLoading,
 } from 'containers/AccountProvider/selectors';
-
-import { getUserProfile } from 'containers/DataCacheProvider/actions';
-
 import {
   selectUsers,
   selectUsersLoading,
 } from 'containers/DataCacheProvider/selectors';
+
+import { getQuestions as getQuestionsWithAnsw } from 'containers/QuestionsWithAnswersOfUser/actions';
+import { getQuestions } from 'containers/QuestionsOfUser/actions';
+import { getUserProfile } from 'containers/DataCacheProvider/actions';
 
 import messages from './messages';
 

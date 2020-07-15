@@ -17,7 +17,6 @@ jest.mock('utils/animation', () => ({
 }));
 
 // const cmp = new HomePage();
-
 const props = {
   locale: 'en',
   account: 'user1',

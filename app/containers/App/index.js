@@ -19,6 +19,8 @@ import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import * as routes from 'routes-config';
 
+import communitiesConfig from 'communities-config';
+
 import injectSaga from 'utils/injectSaga';
 import { DAEMON } from 'utils/constants';
 import { ScrollTo } from 'utils/animation';
@@ -77,7 +79,7 @@ import { REFERRAL_CODE_URI } from './constants';
 import { AUTOLOGIN_DATA } from '../Login/constants';
 import { redirectToFeed } from './actions';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const App = ({
   location: { pathname, search, hash },

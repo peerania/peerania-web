@@ -1,7 +1,15 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
+import EosioProvider from 'containers/EosioProvider';
 import { TagsOfCommunity } from '../index';
 
-const cmp = new TagsOfCommunity();
-
+// const cmp = new TagsOfCommunity();
+let props = {};
 const ev = {
   target: {
     value: 'text',
@@ -14,7 +22,7 @@ const ev = {
 };
 
 beforeEach(() => {
-  cmp.props = {
+  props = {
     locale: 'en',
     communities: [{ id: 1, tags: [] }, { id: 2, tags: [] }],
     existingTags: [{ id: 1 }, { id: 2 }],
@@ -29,7 +37,13 @@ beforeEach(() => {
 });
 
 describe('<TagsOfCommunity />', () => {
-  it('typeInput', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*it('typeInput', () => {
     expect(cmp.props.getExistingTagsDispatch).toHaveBeenCalledTimes(0);
 
     cmp.render();
@@ -63,9 +77,18 @@ describe('<TagsOfCommunity />', () => {
       communityId: cmp.currentCommunity.id,
       loadMore: true,
     });
-  });
+  });*/
 
-  it('render', () => {
-    expect(cmp.render()).toMatchSnapshot();
+  it('should render and match the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <TagsOfCommunity {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+    expect(firstChild).toMatchSnapshot();
   });
 });

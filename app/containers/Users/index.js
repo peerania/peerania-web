@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { compose, bindActionCreators } from 'redux';
 import { translationMessages } from 'i18n';
 
+import communitiesConfig from 'communities-config';
+
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 
@@ -28,7 +30,7 @@ import saga from './saga';
 
 import View from './View';
 
-const single = isSingleCommunityWebsite();
+const single = isSingleCommunityWebsite(communitiesConfig);
 
 const Users = ({
   locale,
