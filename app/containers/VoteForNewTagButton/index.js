@@ -45,7 +45,7 @@ export class VoteForNewTagButton extends React.PureComponent {
       render,
       suggestedTags,
       account,
-      ids,
+      ids = [],
     } = this.props;
 
     const tag = suggestedTags.filter(x => x.id === +tagId)[0];

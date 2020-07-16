@@ -1,7 +1,13 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import { appLocales } from 'i18n';
-import createdHistory from 'createdHistory';
 
+import createdHistory from 'createdHistory';
+import configureStore from 'configureStore';
+
+import EosioProvider from 'containers/EosioProvider';
 import { ChangeLocale } from '../index';
 import { Li } from '../Styled';
 
@@ -19,9 +25,9 @@ const localStorage = {
   setItem: jest.fn(),
 };
 
-const setTimeout = jest.fn().mockImplementation(x => x());
+// const setTimeout = jest.fn().mockImplementation(x => x());
 
-Object.defineProperty(global, 'setTimeout', { value: setTimeout });
+// Object.defineProperty(global, 'setTimeout', { value: setTimeout });
 Object.defineProperty(global, 'localStorage', { value: localStorage });
 
 const props = {
@@ -30,7 +36,13 @@ const props = {
 };
 
 describe('ChangeLocale', () => {
-  const renderer = shallow(ChangeLocale(props));
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, createdHistory);
+  });
+
+  /*const renderer = shallow(ChangeLocale(props));
 
   it('click test', () => {
     expect(props.changeLocaleDispatch).toHaveBeenCalledTimes(0);
@@ -48,9 +60,19 @@ describe('ChangeLocale', () => {
       appLocales[0],
     );
     expect(createdHistory.push).toHaveBeenCalledTimes(2);
-  });
+  });*/
 
-  it('render html', () => {
-    expect(renderer.html()).toMatchSnapshot();
+  it('renders and matches the snapshot', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Provider store={store}>
+        <EosioProvider>
+          <ChangeLocale {...props} />
+        </EosioProvider>
+      </Provider>,
+    );
+
+    expect(firstChild).toMatchSnapshot();
   });
 });

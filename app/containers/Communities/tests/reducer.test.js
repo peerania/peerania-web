@@ -8,13 +8,14 @@ import {
 } from '../actions';
 
 describe('suggestedCommunitiesReducer', () => {
-  let state;
+  let stateBefore, state;
 
   beforeEach(() => {
-    state = fromJS({
+    stateBefore = fromJS({
       username: '',
-      suggestedCommunities: [],
     });
+
+    state = stateBefore.set('suggestedCommunities', []);
   });
 
   it('returns the initial state', () => {

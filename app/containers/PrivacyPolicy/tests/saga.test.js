@@ -5,7 +5,7 @@
 /* eslint-disable redux-saga/yield-effects */
 import { select } from 'redux-saga/effects';
 
-import { getPrivacyPolicy } from 'utils/privacyPolicyManagement';
+import { getPrivacyPolicy } from '../actions';
 
 import defaultSaga, { getPrivacyPolicyWorker } from '../saga';
 
@@ -15,7 +15,7 @@ import {
   GET_PRIVACY_POLICY_ERROR,
 } from '../constants';
 
-jest.mock('utils/privacyPolicyManagement', () => ({
+jest.mock('../actions', () => ({
   getPrivacyPolicy: jest.fn(),
 }));
 

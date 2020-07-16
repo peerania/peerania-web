@@ -5,7 +5,7 @@ import {
   getSectionCode,
   getQuestionCode,
   getIndexes,
-} from '../privacyPolicyManagement';
+} from '../mdManagement';
 
 jest.mock(
   'privacy-policy/en.md',
@@ -44,13 +44,13 @@ describe('getPrivacyPolicy', () => {
 describe('getSectionCode', () => {
   it('test with params', () => {
     const sectionIndex = 0;
-    const sectionCode = getSectionCode(sectionIndex);
+    const sectionCode = getSectionCode(SECTION_ID, sectionIndex);
 
     expect(sectionCode).toBe(`${SECTION_ID}_${sectionIndex}`);
   });
 
   it('test without params', () => {
-    const sectionCode = getSectionCode();
+    const sectionCode = getSectionCode(SECTION_ID);
     expect(sectionCode).toBe(`${SECTION_ID}_0`);
   });
 });
@@ -59,13 +59,13 @@ describe('getQuestionCode', () => {
   it('test with params', () => {
     const sectionIndex = 0;
     const questionIndex = 0;
-    const questionCode = getQuestionCode(sectionIndex, questionIndex);
+    const questionCode = getQuestionCode(SECTION_ID, sectionIndex, questionIndex);
 
     expect(questionCode).toBe(`${SECTION_ID}_${sectionIndex}_${questionIndex}`);
   });
 
   it('test without params', () => {
-    const questionCode = getQuestionCode();
+    const questionCode = getQuestionCode(SECTION_ID);
     expect(questionCode).toBe(`${SECTION_ID}_0_0`);
   });
 });

@@ -21,8 +21,7 @@ describe('accountProviderReducer', () => {
   });
 
   it('getCurrentAccount', () => {
-    const obj = state.set('loading', true);
-    expect(accountProviderReducer(state, getCurrentAccount())).toEqual(obj);
+    expect(accountProviderReducer(state, getCurrentAccount())).toEqual(state);
   });
 
   describe('getCurrentAccountSuccess', () => {
@@ -30,7 +29,8 @@ describe('accountProviderReducer', () => {
       const obj = state
         .set('loading', false)
         .set('account', initialState.get('account'))
-        .set('balance', initialState.get('balance'));
+        .set('balance', initialState.get('balance'))
+        .set('lastUpdate', Date.now());
 
       expect(accountProviderReducer(state, getCurrentAccountSuccess())).toEqual(
         obj,
@@ -40,11 +40,13 @@ describe('accountProviderReducer', () => {
     it('account, balance NOT UNDEFINED', () => {
       const account = 'account';
       const balance = 'balance';
+      const lastUpdate = Date.now();
 
       const obj = state
         .set('loading', false)
         .set('account', account)
-        .set('balance', balance);
+        .set('balance', balance)
+        .set('lastUpdate', lastUpdate);
 
       expect(
         accountProviderReducer(

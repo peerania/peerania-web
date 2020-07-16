@@ -1,5 +1,5 @@
 import { SECTION_ID } from 'containers/Faq/constants';
-import { getFAQ, getSectionCode, getQuestionCode } from '../faqManagement';
+import { getMD, getSectionCode, getQuestionCode } from '../mdManagement';
 
 jest.mock(
   'faq/en.md',
@@ -31,7 +31,7 @@ describe('getFaq', () => {
   };
 
   it('test', () => {
-    expect(getFAQ('en')).toEqual(expected);
+    expect(getMD('en')).toEqual(expected);
   });
 });
 

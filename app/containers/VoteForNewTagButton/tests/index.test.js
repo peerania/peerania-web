@@ -18,9 +18,11 @@ cmp.props = {
   render: jest.fn(),
 };
 
+const event = { currentTarget: { id: cmp.props.buttonId } };
+
 describe('<VoteForNewTagButton />', () => {
   it('downVote', () => {
-    cmp[DOWNVOTE_METHOD]();
+    cmp[DOWNVOTE_METHOD](event);
     expect(cmp.props.downVoteDispatch).toHaveBeenCalledWith(
       cmp.props.communityId,
       cmp.props.tagId,
@@ -29,7 +31,7 @@ describe('<VoteForNewTagButton />', () => {
   });
 
   it('upVote', () => {
-    cmp[UPVOTE_METHOD]();
+    cmp[UPVOTE_METHOD](event);
     expect(cmp.props.upVoteDispatch).toHaveBeenCalledWith(
       cmp.props.communityId,
       cmp.props.tagId,
