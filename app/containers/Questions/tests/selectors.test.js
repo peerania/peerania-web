@@ -86,6 +86,9 @@ describe('selectQuestionsDomain', () => {
       questionsReducer: {
         questionsList,
       },
+      topQuestions: {
+        size: 0,
+      },
     });
 
     it('communityId is TRUE', () => {

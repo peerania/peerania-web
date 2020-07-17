@@ -49,14 +49,18 @@ describe('actions', () => {
     it('GET_QUESTIONS_SUCCESS', () => {
       const questionsList = 'questionsList';
       const next = 'next';
+      const toUpdateQuestions = jest.fn();
+      const questionFilter = 0;
 
       const expected = {
         type: GET_QUESTIONS_SUCCESS,
         questionsList,
         next,
+        toUpdateQuestions,
+        questionFilter,
       };
 
-      expect(getQuestionsSuccess(questionsList, next)).toEqual(expected);
+      expect(getQuestionsSuccess(questionsList, next, toUpdateQuestions, questionFilter)).toEqual(expected);
     });
   });
 

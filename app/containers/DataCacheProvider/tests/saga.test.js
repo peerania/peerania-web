@@ -41,7 +41,7 @@ jest.mock('redux-saga/effects', () => ({
   takeEvery: jest.fn().mockImplementation(res => res),
 }));
 
-jest.mock('utils/faqManagement', () => ({
+jest.mock('utils/mdManagement', () => ({
   getMD: jest.fn(),
 }));
 

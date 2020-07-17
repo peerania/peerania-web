@@ -15,7 +15,7 @@ const event = {
     dataset: { isfollowed: false },
     id: '123',
   },
-};
+}; 
 
 describe('<FollowCommunityButton />', () => {
   describe('followHandler', () => {
@@ -36,6 +36,7 @@ describe('<FollowCommunityButton />', () => {
         onClick: cmp.followHandler,
         isFollowed: false,
         id: `follow_community_${cmp.props.communityIdFilter}`,
+        disabled: false
       });
     });
 
@@ -48,18 +49,20 @@ describe('<FollowCommunityButton />', () => {
         onClick: cmp.followHandler,
         isFollowed: true,
         id: `follow_community_${cmp.props.communityIdFilter}`,
+        disabled: false
       });
     });
 
     it('isFollowed - false, followedCommunities [1, 2]', () => {
       cmp.props.followedCommunities = [1, 2];
-      cmp.props.communityIdFilter = 3;
+      cmp.props.communityIdFilter = 0;
 
       cmp.render();
       expect(cmp.props.render).toHaveBeenCalledWith({
         onClick: cmp.followHandler,
         isFollowed: false,
         id: `follow_community_${cmp.props.communityIdFilter}`,
+        disabled: false
       });
     });
   });

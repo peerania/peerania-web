@@ -124,7 +124,13 @@ describe('selectAccountProviderDomain', () => {
   });
 
   it('makeSelectProfileInfo', () => {
-    const loginData = {};
+    const loginData = {
+      account: "user1", 
+      balance: "balance", 
+      error: "error", 
+      loading: "loading", 
+      profileInfo: {}
+    };
 
     localStorage.getItem.mockImplementation(() => JSON.stringify(loginData));
 

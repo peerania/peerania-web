@@ -104,7 +104,7 @@ export class Fetcher {
         this.hasMoreToFetch = false;
       }
 
-      if (!rows.length) return;
+      if ((!!rows && !rows.length) || !rows) return;
 
       this.lastKeyFetched =
         this.sortType.keyFunc(rows[rows.length - 1][this.sortType.keyName]) + 1;

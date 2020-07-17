@@ -36,9 +36,9 @@ describe('<CreateCommunity />', () => {
 
   it('componentWillUnmount', () => {
     // expect(cmp.props.setDefaultStoreDispatch).toHaveBeenCalledTimes(0);
+    expect(props.setDefaultStoreDispatch).toHaveBeenCalledTimes(0);
     // cmp.componentWillUnmount();
     // expect(cmp.props.setDefaultStoreDispatch).toHaveBeenCalledTimes(1);
-    expect(props.setDefaultStoreDispatch).toHaveBeenCalledTimes(0);
     expect(props.setDefaultStoreDispatch).toHaveBeenCalledTimes(1);
   });
 

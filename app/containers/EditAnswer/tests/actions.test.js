@@ -77,7 +77,7 @@ describe('getAnswer actions', () => {
       const answer = 'answer';
       const expected = {
         type: EDIT_ANSWER_SUCCESS,
-        answer,
+        questionData: answer,
       };
 
       expect(editAnswerSuccess(answer)).toEqual(expected);

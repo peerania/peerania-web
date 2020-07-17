@@ -38,7 +38,7 @@ export class FollowCommunityButton extends React.PureComponent {
   };
 
   render() /* istanbul ignore next */ {
-    const { communityIdFilter, followedCommunities, render, ids } = this.props;
+    const { communityIdFilter, followedCommunities, render, ids = [] } = this.props;
     const id = `follow_community_${communityIdFilter}`;
     const disabled = ids.includes(id);
 

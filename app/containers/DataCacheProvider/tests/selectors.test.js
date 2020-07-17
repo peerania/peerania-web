@@ -2,7 +2,9 @@ import { fromJS } from 'immutable';
 import React from 'react';
 
 import * as routes from 'routes-config';
-import { getQuestionCode } from 'utils/faqManagement';
+import { getQuestionCode } from 'utils/mdManagement';
+
+import { SECTION_ID } from 'containers/Faq/constants';
 
 import A from 'components/A';
 
@@ -151,8 +153,8 @@ describe('selectDataCacheProviderDomain', () => {
   it('selectFaqQuestions', () => {
     const isSelectFaqQuestions = selectFaqQuestions(['0.0', '1.0']);
     expect(isSelectFaqQuestions(mockedState)).toEqual([
-      <A to={routes.faq(getQuestionCode(0, 0))}>header00</A>,
-      <A to={routes.faq(getQuestionCode(1, 0))}>header10</A>,
+      <A to={routes.faq(getQuestionCode(SECTION_ID, 0))}>header00</A>,
+      <A to={routes.faq(getQuestionCode(SECTION_ID, 1))}>header10</A>,
     ]);
   });
 });

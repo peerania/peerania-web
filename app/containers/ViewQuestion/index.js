@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose, bindActionCreators } from 'redux';
 import { translationMessages } from 'i18n';
+import $ from 'jquery';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -90,7 +91,7 @@ export const ViewQuestion = ({
     getQuestionDataDispatch(match.params.id);
 
     return () => {
-      window.$(window).off();
+      $(window).off();
     };
   }, []);
 

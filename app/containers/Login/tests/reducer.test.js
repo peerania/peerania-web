@@ -90,6 +90,10 @@ describe('loginReducer', () => {
   it('LOGIN_WITH_SCATTER_SUCCESS', () => {
     const obj = state
       .set('showModal', initialState.get('showModal'))
+      .set(
+        'loginWithScatterProcessing',
+        initialState.get('loginWithScatterProcessing'),
+      )
       .set('content', initialState.get('content'));
 
     expect(loginReducer(state, loginWithScatterSuccess())).toEqual(obj);
@@ -98,7 +102,12 @@ describe('loginReducer', () => {
   it('LOGIN_WITH_SCATTER_ERROR', () => {
     const loginWithScatterError = 'loginWithScatterError';
 
-    const obj = state.set('loginWithScatterError', loginWithScatterError);
+    const obj = state
+      .set('loginWithScatterError', loginWithScatterError)
+      .set(
+        'loginWithScatterProcessing',
+        initialState.get('loginWithScatterProcessing'),
+      );
 
     expect(
       loginReducer(state, loginWithScatterErr(loginWithScatterError)),

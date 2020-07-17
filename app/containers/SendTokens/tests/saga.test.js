@@ -12,7 +12,7 @@ import {
   EOS_SEND_TO_ACCOUNT_FIELD,
   AMOUNT_FIELD,
   PASSWORD_FIELD,
-  HIDE_SEND_TOKENS_MODAL,
+  HIDE_SENDTOKENS_MODAL,
 } from '../constants';
 
 jest.mock('redux-saga/effects', () => ({
@@ -104,7 +104,7 @@ describe('sendTokensWorker', () => {
 
       it('put @hideSendTokensModal', () => {
         const step = generator.next();
-        expect(step.value.type).toBe(HIDE_SEND_TOKENS_MODAL);
+        expect(step.value.type).toBe(HIDE_SENDTOKENS_MODAL);
       });
 
       it('call @resetForm', () => {

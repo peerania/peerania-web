@@ -3,7 +3,7 @@ import { TOP_RIGHT } from '../constants';
 
 const cmp = new Toast();
 const event = {
-  target: {
+  currentTarget: {
     dataset: {
       key: 'key',
     },

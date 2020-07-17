@@ -30,7 +30,7 @@ export class Toast extends React.Component {
   }
 
   removeToast = e => {
-    this.props.removeToastDispatch(e.currentTarget.dataset.key);
+    return this.props.removeToastDispatch(e.currentTarget.dataset.key);
   };
 
   render() /* istanbul ignore next */ {

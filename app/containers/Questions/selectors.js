@@ -21,7 +21,7 @@ const selectTopQuestions = () =>
   createSelector(selectQuestionsDomain, substate => {
     const topQuestions = substate.get('topQuestions');
 
-    if (topQuestions.size === 0) {
+    if (!topQuestions || topQuestions.size === 0) {
       return [];
     }
 

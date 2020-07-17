@@ -57,7 +57,7 @@ describe('getBalance', () => {
       process.env.EOS_TOKEN_CONTRACT_ACCOUNT,
     );
 
-    expect(res).toBe('1000');
+    expect(res).toBe(1000);
   });
 });
 
@@ -140,7 +140,7 @@ describe('sendTokens', () => {
       {
         from: info.from,
         to: info.to,
-        quantity: getNormalizedCurrency(info.quantity),
+        quantity: getNormalizedCurrency(info.quantity, 6, APP_CURRENCY),
         memo: '',
       },
       process.env.EOS_TOKEN_CONTRACT_ACCOUNT,
@@ -151,7 +151,8 @@ describe('sendTokens', () => {
 describe('getNormalizedCurrency', () => {
   it('@value is NUMBER', () => {
     const value = '1000';
-    const normalizedCurrency = getNormalizedCurrency(value);
+    const precision = 6;
+    const normalizedCurrency = getNormalizedCurrency(value, precision, APP_CURRENCY);
 
     expect(normalizedCurrency).toBe(`1000.000000 ${APP_CURRENCY}`);
   });
