@@ -126,3 +126,5 @@ export const signup = {
     scatter: false,
   },
 };
+
+export const textEditorTestPage = () => `/texteditor-test`;

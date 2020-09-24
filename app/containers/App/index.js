@@ -71,6 +71,7 @@ import {
   PrivacyPolicy,
   FullWidthPreloader,
   TermsOfService,
+  TextEditorTestPage,
 } from './imports';
 import { getValueFromSearchString } from '../../utils/url';
 import { getCookie, setCookie } from '../../utils/cookie';
@@ -363,6 +364,11 @@ const App = ({
             <RegistrationAlmostDoneNoAccount />
           </React.Suspense>
         </Route>
+
+        <Route
+          path={routes.textEditorTestPage()}
+          render={props => Wrapper(TextEditorTestPage, props)}
+        />
 
         <Route render={props => Wrapper(NotFoundPage, props)} />
       </Switch>

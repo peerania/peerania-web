@@ -37,16 +37,16 @@ const Communities = React.lazy(() => import('components/ExistingCommunities'));
 const FullWidthPreloader = React.lazy(() =>
   import('components/LoadingIndicator/FullWidthPreloader'),
 );
-
 const SuggestedCommunities = React.lazy(() =>
   import('components/SuggestedCommunities'),
 );
+const TextEditorTestPage = React.lazy(() =>
+  import('containers/TextEditorTestPage'),
+);
+
 const Wallet = React.lazy(() => import('containers/Wallet'));
-
 const Search = React.lazy(() => import('containers/Search'));
-
 const Support = React.lazy(() => import('containers/Support'));
-
 const PrivacyPolicy = React.lazy(() => import('containers/PrivacyPolicy'));
 
 export {
@@ -88,4 +88,5 @@ export {
   PrivacyPolicy,
   FullWidthPreloader,
   TermsOfService,
+  TextEditorTestPage,
 };
