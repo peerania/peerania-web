@@ -10,6 +10,7 @@ import { tags } from 'routes-config';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { isSingleCommunityWebsite } from 'utils/communityManagement';
+import { isModerator } from 'utils/profileManagement';
 
 import Seo from 'components/Seo';
 import TipsBase from 'components/Base/TipsBase';
@@ -27,6 +28,7 @@ import {
   selectUserRating,
   selectUserEnergy,
   makeSelectAccount,
+  makeSelectProfileInfo,
 } from 'containers/AccountProvider/selectors';
 
 import {
@@ -65,6 +67,7 @@ const CreateTag = ({
   account,
   userRating,
   userEnergy,
+  profileInfo,
 }) => {
   const commId = useMemo(() => single || +match.params.communityid, [match]);
 
@@ -83,14 +86,15 @@ const CreateTag = ({
     },
     [suggestTagDispatch],
   );
-
+  console.log(profileInfo);
   if (
-    !account ||
-    userRating < MIN_RATING_TO_CREATE_TAG ||
-    userEnergy < MIN_ENERGY_TO_CREATE_TAG
+    (!account ||
+      userRating < MIN_RATING_TO_CREATE_TAG ||
+      userEnergy < MIN_ENERGY_TO_CREATE_TAG) &&
+    !isModerator(profileInfo)
   )
     return <Redirect to={tags()} />;
-
+  console.log(communities);
   return (
     <div>
       <Seo
@@ -140,6 +144,7 @@ CreateTag.propTypes = {
   account: PropTypes.string,
   userRating: PropTypes.number,
   userEnergy: PropTypes.number,
+  profileInfo: PropTypes.object,
 };
 
 export default compose(
@@ -157,6 +162,7 @@ export default compose(
       account: makeSelectAccount(),
       userRating: selectUserRating(),
       userEnergy: selectUserEnergy(),
+      profileInfo: makeSelectProfileInfo(),
     }),
     dispatch => ({
       suggestTagDispatch: bindActionCreators(suggestTag, dispatch),

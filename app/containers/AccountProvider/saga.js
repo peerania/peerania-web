@@ -2,7 +2,7 @@ import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 import * as routes from 'routes-config';
 import _get from 'lodash/get';
 
-import { getProfileInfo, getUserTelegramData } from 'utils/profileManagement';
+import { getProfileInfo, getUserTelegramData, isModerator } from 'utils/profileManagement';
 import { updateAcc } from 'utils/accountManagement';
 import {
   convertPeerValueToNumberValue,
@@ -51,7 +51,6 @@ import {
   ALL_PROPERTY_COMMUNITY_TABLE,
   INVITED_USERS_SCOPE,
   INVITED_USERS_TABLE,
-  MODERATOR_KEY,
   REWARD_REFER,
 } from 'utils/constants';
 import { SHOW_SCATTER_SIGNUP_FORM_SUCCESS } from 'containers/SignUp/constants';
@@ -200,8 +199,8 @@ export const getCurrentAccountWorker = function*(initAccount) {
 
 export function* isAvailableAction(isValid) {
   const profileInfo = yield select(makeSelectProfileInfo());
-
-  if (profileInfo.integer_properties.find(x => x.key === MODERATOR_KEY)) {
+  
+  if (isModerator(profileInfo)) {
     return true;
   }
 

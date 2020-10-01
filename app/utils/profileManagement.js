@@ -2,9 +2,13 @@ import userBodyAvatar from 'images/user2.svg?inline';
 import noAvatar from 'images/noAvatar.png';
 import editUserNoAvatar from 'images/editUserNoAvatar.png';
 
-import { DISPLAY_NAME_FIELD } from 'containers/Profile/constants';
 import { saveText, getText, saveFile, getFileUrl } from './ipfs';
+import {
+  callService,
+  NOTIFICATIONS_INFO_SERVICE,
+} from './web_integration/src/util/aws-connector';
 
+import { DISPLAY_NAME_FIELD } from 'containers/Profile/constants';
 import {
   ACCOUNT_TABLE,
   ALL_ACCOUNTS_SCOPE,
@@ -14,11 +18,8 @@ import {
   ALL_TG_ACCOUNTS_SCOPE,
   CONFIRM_TELEGRAM_ACCOUNT,
   UNLINK_TELEGRAM_ACCOUNT,
+  MODERATOR_KEY
 } from './constants';
-import {
-  callService,
-  NOTIFICATIONS_INFO_SERVICE,
-} from './web_integration/src/util/aws-connector';
 
 export function getUserAvatar(avatarHash, userId, account) {
   if (avatarHash && avatarHash !== NO_AVATAR) {
@@ -255,17 +256,12 @@ export async function getUserTelegramData(eosService, userName) {
 }
 
 export async function confirmTelegramAccount(eosService, user) {
-  await eosService.sendTransaction(
-    user,
-    CONFIRM_TELEGRAM_ACCOUNT,
-    { user },
-  );
+  await eosService.sendTransaction(user, CONFIRM_TELEGRAM_ACCOUNT, { user });
 }
 
 export async function unlinkTelegramAccount(eosService, user) {
-  await eosService.sendTransaction(
-    user,
-    UNLINK_TELEGRAM_ACCOUNT,
-    { user },
-  );
+  await eosService.sendTransaction(user, UNLINK_TELEGRAM_ACCOUNT, { user });
 }
+
+export const isModerator = profile =>
+  profile.integer_properties.find(x => x.key === MODERATOR_KEY);

@@ -34,7 +34,7 @@ export function* suggestTagWorker({ tag, reset }) {
 
 export function* checkReadinessWorker({ buttonId }) {
   yield call(isAuthorized);
-
+  
   yield call(isValid, {
     buttonId: buttonId || CREATE_TAG_BUTTON,
     minRating: MIN_RATING_TO_CREATE_TAG,
@@ -46,8 +46,11 @@ export function* checkReadinessWorker({ buttonId }) {
 export function* redirectToCreateTagWorker({ buttonId, communityId }) {
   try {
     yield call(checkReadinessWorker, { buttonId });
+    
     yield call(createdHistory.push, routes.tagsCreate(communityId));
-  } catch (err) {}
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export default function*() {
