@@ -7,6 +7,7 @@ import ScatterJS from 'scatterjs-core';
 import ScatterEOS from 'scatterjs-plugin-eosjs';
 import { TextDecoder, TextEncoder } from 'text-encoding';
 import orderBy from 'lodash/orderBy';
+import { Keycat } from 'keycatjs';
 
 import { AUTOLOGIN_DATA } from 'containers/Login/constants';
 import blockchainErrors from 'containers/ErrorPage/blockchainErrors';
@@ -46,6 +47,9 @@ class EosioService {
     this.isScatterWindowOpened = false;
     this.#key = null;
     this.withScatter = false;
+    this.keycat = null;
+    this.keycatUserData = null;
+    this.withKeycat = false;
   }
 
   initScatter = async appName => {
@@ -81,6 +85,9 @@ class EosioService {
           get_block: api.getBlock,
         },
       };
+
+      this.keycatUserData = null;
+      this.withKeycat = false;
     } catch (err) {
       this.scatterInstalled = false;
       this.initialized = false;
@@ -104,6 +111,48 @@ class EosioService {
     this.selectedAccount = acc;
     this.withScatter = false;
     this.#key = key;
+
+    await this.initKeycat();
+    this.withKeycat = false;
+    this.keycatUserData = null;
+  };
+
+  initKeycat = async () => {
+    const { allEndpoints } = await getNodes();
+    const eosNodes = allEndpoints.map(el => el.endpoint);
+
+    // Connect to telos net
+    const keycat = new Keycat({
+      blockchain: {
+        name: 'telos',
+        nodes: eosNodes,
+      },
+    });
+
+    this.keycat = keycat;
+  };
+
+  keycatSignIn = async () => {
+    if (!this.keycat) await this.initKeycat();
+    const keycatUserData = await this.keycat.signin();
+    this.keycatUserData = keycatUserData;
+    this.selectedAccount = keycatUserData.accountName;
+    this.withKeycat = true;
+    this.withScatter = false;
+    return keycatUserData;
+  };
+
+  setKeycatAutoLoginData = async keycatUserData => {
+    this.keycatUserData = keycatUserData;
+    this.selectedAccount = keycatUserData.accountName;
+    this.withKeycat = true;
+    this.withScatter = false;
+  };
+
+  resetKeycatUserData = () => {
+    this.keycatUserData = null;
+    this.selectedAccount = null;
+    this.withKeycat = false;
   };
 
   privateToPublic = privateKey => {
@@ -214,6 +263,10 @@ class EosioService {
 
     createPushActionBody(data);
 
+    const isKeycatUser =
+      this.keycatUserData && this.keycatUserData.accountName === actor;
+    const keycatPermission = this.keycatUserData?.permission;
+
     const transaction = {
       actions: [
         {
@@ -222,7 +275,9 @@ class EosioService {
           authorization: [
             {
               actor,
-              permission: DEFAULT_EOS_PERMISSION,
+              permission: isKeycatUser
+                ? keycatPermission
+                : DEFAULT_EOS_PERMISSION,
             },
           ],
           data: {
@@ -239,7 +294,7 @@ class EosioService {
 
     const initializedWithScatter = !this.eosApi.signatureProvider;
 
-    if (initializedWithScatter) {
+    if (initializedWithScatter && !this.withKeycat) {
       try {
         if (this.isScatterWindowOpened) {
           throw new ApplicationError('Scatter window is already opened');
@@ -261,6 +316,23 @@ class EosioService {
       } catch (e) {
         this.isScatterWindowOpened = false;
         throw new BlockchainError(e.message);
+      }
+    }
+
+    if (this.withKeycat) {
+      try {
+        const result = await this.keycat.account(actor).transact(
+          {
+            actions: transaction.actions,
+          },
+          {
+            blocksBehind: 3,
+            expireSeconds: 60,
+          },
+        );
+        return result;
+      } catch (err) {
+        throw new BlockchainError(err.message);
       }
     }
 
