@@ -231,14 +231,6 @@ export function* isAvailableAction(isValid, comunityID) {
     return true;
   }
 
-  if (
-    profileInfo.permissions.find(
-      x => x.value == COMMUNITY_ADMIN_VALUE && x.community == comunityID,
-    )
-  ) {
-    return true;
-  }
-
   yield call(isValid);
 }
 

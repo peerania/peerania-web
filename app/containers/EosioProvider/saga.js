@@ -93,31 +93,22 @@ export function* isAuthorized() {
   }
 }
 
-export function* isValid({
-  creator,
-  buttonId,
-  minRating,
-  minEnergy,
-  communityId,
-}) {
+export function* isValid({ creator, buttonId, minRating, minEnergy }) {
   const locale = yield select(makeSelectLocale());
   const profileInfo = yield select(makeSelectProfileInfo());
   const selectedAccount = yield select(makeSelectAccount());
 
-  yield call(
-    isAvailableAction,
-    () =>
-      validate({
-        rating: profileInfo.rating,
-        translations: translationMessages[locale],
-        actor: selectedAccount,
-        creator,
-        buttonId,
-        energy: profileInfo.energy,
-        minRating,
-        minEnergy,
-      }),
-    communityId,
+  yield call(isAvailableAction, () =>
+    validate({
+      rating: profileInfo.rating,
+      translations: translationMessages[locale],
+      actor: selectedAccount,
+      creator,
+      buttonId,
+      energy: profileInfo.energy,
+      minRating,
+      minEnergy,
+    }),
   );
 }
 
