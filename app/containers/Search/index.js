@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint indent: 0, consistent-return: 0 */
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -30,51 +31,59 @@ import Item from './Item';
 
 import messages from './messages';
 
-const Search = ({
-  match,
-  locale,
-  items,
-  getResultsDispatch,
-  getResultsProcessing,
-}) => {
-  const query = match.params.q;
-  useEffect(
-    () => {
-      if (query) {
-        getResultsDispatch(query);
-      }
-    },
-    [getResultsDispatch, query],
-  );
+class Search extends React.PureComponent {
+  componentDidMount() {
+    this.search();
+  }
 
-  return (
-    <div>
-      <Seo
-        title={translationMessages[locale][messages.title.id]}
-        description={translationMessages[locale][messages.description.id]}
-        language={locale}
-        index={false}
-      />
+  componentDidUpdate(prevProps) {
+    this.search(prevProps.match.params.q);
+  }
 
-      <Header className="mb-to-sm-0 mb-from-sm-3">
-        <H3>
-          <MediumImageStyled src={searchIcon} alt="search" />
-          <FormattedMessage {...commonMessages.search} />
-        </H3>
-      </Header>
+  search = prevQuery => {
+    const currentQuery = this.props.match.params.q;
 
-      <Base>
-        <ul>{items.map(x => <Item {...x} />)}</ul>
+    if (prevQuery === currentQuery) {
+      return null;
+    }
 
-        <div>
-          {getResultsProcessing && <LoadingIndicator />}
-          {!getResultsProcessing &&
-            !items.length && <FormattedMessage {...commonMessages.noResults} />}
-        </div>
-      </Base>
-    </div>
-  );
-};
+    this.props.getResultsDispatch(currentQuery);
+  };
+
+  render() {
+    const { getResultsProcessing, items, locale } = this.props;
+
+    return (
+      <div>
+        <Seo
+          title={translationMessages[locale][messages.title.id]}
+          description={translationMessages[locale][messages.description.id]}
+          language={locale}
+          index={false}
+        />
+
+        <Header className="mb-to-sm-0 mb-from-sm-3">
+          <H3>
+            <MediumImageStyled src={searchIcon} alt="search" />
+            <FormattedMessage {...commonMessages.search} />
+          </H3>
+        </Header>
+
+        <Base>
+          <ul>{items.map(x => <Item {...x} />)}</ul>
+
+          <div>
+            {getResultsProcessing && <LoadingIndicator />}
+            {!getResultsProcessing &&
+              !items.length && (
+                <FormattedMessage {...commonMessages.noResults} />
+              )}
+          </div>
+        </Base>
+      </div>
+    );
+  }
+}
 
 Search.propTypes = {
   items: PropTypes.array,
@@ -84,17 +93,28 @@ Search.propTypes = {
   locale: PropTypes.string,
 };
 
+const mapStateToProps = createStructuredSelector({
+  items: selectItems(),
+  getResultsProcessing: selectGetResultsProcessing(),
+  locale: makeSelectLocale(),
+});
+
+function mapDispatchToProps(dispatch) /* istanbul ignore next */ {
+  return {
+    getResultsDispatch: bindActionCreators(getResults, dispatch),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'search', reducer });
+const withSaga = injectSaga({ key: 'search', saga });
+
 export default compose(
-  injectReducer({ key: 'search', reducer }),
-  injectSaga({ key: 'search', saga }),
-  connect(
-    createStructuredSelector({
-      items: selectItems(),
-      getResultsProcessing: selectGetResultsProcessing(),
-      locale: makeSelectLocale(),
-    }),
-    dispatch => ({
-      getResultsDispatch: bindActionCreators(getResults, dispatch),
-    }),
-  ),
+  withReducer,
+  withSaga,
+  withConnect,
 )(Search);
