@@ -4,6 +4,7 @@ import peeranhaLogo from 'images/currencyPeer.svg?inline';
 import scatterLogo from 'images/scatterLogo.svg?inline';
 import wombatLogo from 'images/wombat.png';
 import keycatTextLogo from 'images/keycatText.svg?inline';
+import boidLogo from 'app/images/boidLogo.svg?inline';
 
 export const WALLETS = {
   PEERANHA: {
@@ -81,6 +82,20 @@ export const CURRENCIES = {
     contractAccount: 'sqrlwalletio',
     blockchain: 'Telos',
     logo: sqrlWallet,
+    wallets: [
+      WALLETS.PEERANHA,
+      WALLETS.SCATTER_SQRL_WOMBAT,
+      WALLETS.WOMBAT,
+      WALLETS.KEYCAT,
+    ],
+  },
+  BOID: {
+    name: 'BOID',
+    symbol: 'BOID',
+    precision: 4,
+    contractAccount: 'boidLogo.svg.io',
+    blockchain: 'Telos',
+    logo: boidLogo,
     wallets: [
       WALLETS.PEERANHA,
       WALLETS.SCATTER_SQRL_WOMBAT,

@@ -291,7 +291,9 @@ FormClone = connect(
     if (!cryptoAccounts[CURRENCIES.TLOS.name]) {
       cryptoAccounts[CURRENCIES.TLOS.name] = account;
     }
-
+    if (!cryptoAccounts[CURRENCIES.BOID.name]) {
+      cryptoAccounts[CURRENCIES.BOID.name] = account;
+    }
     const initialCurrency = Object.keys(cryptoAccounts)[0];
     const currencyValue = _get(formValues, CURRENCY_FIELD, null);
     const walletValue = _get(formValues, WALLET_FIELD, null);
