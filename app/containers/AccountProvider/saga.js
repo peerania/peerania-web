@@ -59,6 +59,7 @@ import {
   MODERATOR_KEY,
   REWARD_REFER,
   COMMUNITY_ADMIN_VALUE,
+  initVals,
 } from 'utils/constants';
 import { SHOW_WALLET_SIGNUP_FORM_SUCCESS } from 'containers/SignUp/constants';
 import {
@@ -124,10 +125,10 @@ export const getCurrentAccountWorker = function*(initAccount) {
     const eosService = yield select(selectEos);
     const prevProfileInfo = yield select(makeSelectProfileInfo());
 
-    if (eosService.withScatter)
+    if (eosService.eosInitMethod === initVals.initWithScatter)
       yield put(addLoginData({ loginWithScatter: true }));
 
-    if (eosService.withKeycat)
+    if (eosService.eosInitMethod === initVals.initWithKeycat)
       yield put(addLoginData({ loginWithKeycat: true }));
 
     const globalBoostStat = yield call(getGlobalBoostStatistics, eosService);
