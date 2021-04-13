@@ -52,14 +52,15 @@ import {
   TAG_DESCRIPTION_FIELD,
   TAG_SECTION,
   CREATE_COMMUNITY_BUTTON,
-  ABOUT_FIELD,
   MAIN_COLOR_FIELD,
   HIGHLIGHT_COLOR_FIELD,
   FORM_TYPE,
   ANY_TYPE,
+  GENERAL_TYPE,
+  BLOGGER_TYPE,
+  STANDART_TYPE,
 } from './constants';
 
-import AboutForm from './AboutForm';
 import BloggerModeForm from './BloggerModeForm';
 import TypeForm from './QuestionsTypeForm';
 import CommunityTypeForm from './CommunityTypeForm';
@@ -87,6 +88,7 @@ const CreateCommunityForm = ({
   formValues,
   intl,
   profile,
+  isBloggerForm,
 }) => {
   const [tags, changeTags] = useState(DEFAULT_TAGS_ARRAY);
 
@@ -181,16 +183,17 @@ const CreateCommunityForm = ({
           splitInHalf
         />
 
-        {profileWithModeratorRights && (
-          <TypeForm
-            locale={locale}
-            change={change}
-            formValues={formValues}
-            intl={intl}
-          />
-        )}
+        {profileWithModeratorRights &&
+          !isBloggerForm && (
+            <TypeForm
+              locale={locale}
+              change={change}
+              formValues={formValues}
+              intl={intl}
+            />
+          )}
 
-        <CommunityTypeForm change={change} intl={intl} />
+        {!isBloggerForm && <CommunityTypeForm change={change} intl={intl} />}
 
         {+formValues[COMMUNITY_TYPE] ? (
           <BloggerModeForm
@@ -312,7 +315,7 @@ const FormCloneRedux = reduxForm({
 
 export default memo(
   injectIntl(
-    connect(state => {
+    connect((state, { isBloggerForm }) => {
       const form = state.toJS().form[FORM_NAME] || { values: {} };
 
       if (form.values && form.values.tags) {
@@ -332,7 +335,8 @@ export default memo(
           [COMMUNITY_TYPE]: 1,
           [MAIN_COLOR_FIELD]: PEER_PRIMARY_COLOR,
           [HIGHLIGHT_COLOR_FIELD]: PEER_WARNING_COLOR,
-          [FORM_TYPE]: ANY_TYPE,
+          [COMMUNITY_TYPE]: isBloggerForm ? BLOGGER_TYPE : STANDART_TYPE,
+          [FORM_TYPE]: isBloggerForm ? GENERAL_TYPE : ANY_TYPE,
         },
       };
     })(FormCloneRedux),

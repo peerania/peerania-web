@@ -8,12 +8,19 @@ import {
   GET_FORM_PROCESSING,
   GET_FORM_SUCCESS,
   GET_FORM_ERROR,
+  CHECK_AUTHORISATION_BY_INVITATION,
 } from './constants';
 
 export function redirectToCreateCommunity(ev) {
   return {
     type: REDIRECT_TO_CREATE_COMMUNITY,
     buttonId: ev.currentTarget.id,
+  };
+}
+
+export function checkAuthorisation() {
+  return {
+    type: CHECK_AUTHORISATION_BY_INVITATION,
   };
 }
 

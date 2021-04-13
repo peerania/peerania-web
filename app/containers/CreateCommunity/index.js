@@ -23,7 +23,10 @@ import Loader from 'components/LoadingIndicator/WidthCentered';
 
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
 import { selectFaqQuestions } from 'containers/DataCacheProvider/selectors';
-import { makeSelectProfileInfo } from 'containers/AccountProvider/selectors';
+import {
+  makeSelectProfileInfo,
+  selectIsInvitedBlogger,
+} from 'containers/AccountProvider/selectors';
 
 import {
   WHAT_IS_COMMUNITY_QUESTION,
@@ -35,7 +38,12 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-import { createCommunity, setDefaultStore, getForm } from './actions';
+import {
+  createCommunity,
+  setDefaultStore,
+  getForm,
+  checkAuthorisation,
+} from './actions';
 
 import {
   COMM_NAME_FIELD,
@@ -77,11 +85,26 @@ export const CreateCommunity = ({
   getFormDispatch,
   isFormAvailable,
   profile,
+  isInvitedBlogger,
+  checkAuthorisationDispatch,
 }) => {
+  const bloggerPath =
+    window.location.pathname
+      .split('/')
+      .slice(0, 3)
+      .join('/') + '/';
+  const isBloggerForm = bloggerPath === routes.communitiesCreateByInvite('');
+
   useEffect(() => {
     setDefaultStoreDispatch();
 
     getFormDispatch();
+  }, []);
+
+  useEffect(() => {
+    if (isBloggerForm) {
+      checkAuthorisationDispatch();
+    }
   }, []);
 
   const createCommunityMethod = (...args) => {
@@ -125,13 +148,19 @@ export const CreateCommunity = ({
     translations: translationMessages[locale],
     locale,
     profile,
+    isBloggerForm,
   };
 
   const path = window.location.pathname + window.location.hash;
 
   if (isFormLoading) return <Loader />;
 
-  if (!isFormAvailable) return <Redirect to={routes.communities()} />;
+  if (!isBloggerForm) {
+    if (!isFormAvailable) return <Redirect to={routes.communities()} />;
+  } else {
+    if (profile && !isInvitedBlogger)
+      return <Redirect to={routes.communities()} />;
+  }
 
   return (
     <div>
@@ -144,14 +173,14 @@ export const CreateCommunity = ({
 
       <Header headerDescriptor={messages.newCommunity} />
 
-      {path === createCommunityRoute && (
+      {(path === createCommunityRoute || isBloggerForm) && (
         <TipsBase className="overflow-hidden">
           <Form {...sendProps} />
           <Tips faqQuestions={faqQuestions} />
         </TipsBase>
       )}
 
-      {path !== createCommunityRoute && <Banner />}
+      {path !== createCommunityRoute && !isBloggerForm && <Banner />}
     </div>
   );
 };
@@ -179,11 +208,16 @@ const withConnect = connect(
     isFormLoading: selectors.selectIsFormLoading(),
     isFormAvailable: selectors.selectIsFormAvailable(),
     profile: makeSelectProfileInfo(),
+    isInvitedBlogger: selectIsInvitedBlogger(),
   }),
   dispatch => ({
     createCommunityDispatch: bindActionCreators(createCommunity, dispatch),
     setDefaultStoreDispatch: bindActionCreators(setDefaultStore, dispatch),
     getFormDispatch: bindActionCreators(getForm, dispatch),
+    checkAuthorisationDispatch: bindActionCreators(
+      checkAuthorisation,
+      dispatch,
+    ),
   }),
 );
 

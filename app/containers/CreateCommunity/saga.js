@@ -12,6 +12,7 @@ import {
   selectUserEnergy,
   makeSelectAccount,
   selectIsGlobalModerator,
+  selectIsInvitedBlogger,
 } from 'containers/AccountProvider/selectors';
 
 import { getSuggestedCommunities } from 'containers/Communities/actions';
@@ -65,7 +66,14 @@ export function* checkReadinessWorker({ buttonId }) {
 export function* redirectToCreateCommunityWorker({ buttonId }) {
   try {
     yield call(checkReadinessWorker, { buttonId });
-    yield call(createdHistory.push, routes.communitiesCreate());
+    const account = yield select(makeSelectAccount());
+    if (account) yield call(createdHistory.push, routes.communitiesCreate());
+  } catch (err) {}
+}
+
+export function* checkAuthorisationByInvitationWorker() {
+  try {
+    yield call(checkReadinessWorker, {});
   } catch (err) {}
 }
 
@@ -77,12 +85,14 @@ export function* getFormWorker() {
     const userRating = yield select(selectUserRating());
     const userEnergy = yield select(selectUserEnergy());
     const isGlobalModerator = yield select(selectIsGlobalModerator());
+    const isInvitedBlogger = yield select(selectIsInvitedBlogger());
 
     if (
       !account ||
       ((userRating < MIN_RATING_TO_CREATE_COMMUNITY ||
         userEnergy < MIN_ENERGY_TO_CREATE_COMMUNITY) &&
-        !isGlobalModerator)
+        !isGlobalModerator &&
+        !isInvitedBlogger)
     ) {
       yield put(getFormSuccess(false));
     } else {
