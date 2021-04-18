@@ -116,9 +116,10 @@ export const ViewQuestion = ({
       if (questionData && !questionDataLoading) {
         window.isRendered = true;
       }
-
+      console.log(questionDataLoading)
+      console.log(questionData)
       if (!questionDataLoading && !questionData) {
-        history.push(routes.notFound());
+        // history.push(routes.notFound());
       }
     },
     [questionData, questionDataLoading],
