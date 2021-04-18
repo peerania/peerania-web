@@ -497,7 +497,7 @@ export function* getQuestionDataWorker({ questionId }) {
       questionId,
       user: account,
     });
-
+    console.log(questionData)
     const single = isSingleCommunityWebsite();
     const isAnotherCommQuestion =
       single && questionData.community_id !== single;
@@ -550,6 +550,7 @@ export function* getQuestionDataWorker({ questionId }) {
     }
 
     if (isAnotherCommQuestion) {
+      console.log(isAnotherCommQuestion)
       yield put(getQuestionDataSuccess(null));
     } else {
       yield put(getQuestionDataSuccess(questionData));
